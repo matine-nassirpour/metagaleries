@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription de Meta Galeries{% endblock %}
+
+{% block body %}
+    {% block header %}{% endblock %}
+
+    {{ form_start(registrationForm) }}
+        {{ form_row(registrationForm.email) }}
+        {{ form_row(registrationForm.password) }}
+        <button type="submit" class="btn btn-primary mt-3">S'inscrire</button>
+    {{ form_end(registrationForm) }}
+
+    {% block footer %}{% endblock %}
+{% endblock %}
