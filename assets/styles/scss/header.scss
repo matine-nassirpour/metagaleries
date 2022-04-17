@@ -129,8 +129,11 @@
 .nav-tools {
   display: flex;
   font-size: 25px;
-  color: #FFFFFF;
   align-items: center;
+
+  a {
+    color: #FFFFFF;
+  }
 }
 
 .nav-tool-cart {
@@ -148,11 +151,11 @@
 }
 
 .nav-a {
-  color: #FFFFFF;
+  color: #FFFFFF !important;
   font-weight: 600;
 
   &:hover {
-    color: #e1e1e1;
+    color: #D0D0D0 !important;
   }
 }
 
