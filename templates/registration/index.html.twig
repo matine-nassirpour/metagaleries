@@ -2,8 +2,9 @@
 
 {% block title %}Inscription de Meta Galeries{% endblock %}
 
+{% block header %}{% endblock %}
+
 {% block body %}
-    {% block header %}{% endblock %}
 
     {{ form_start(registrationForm) }}
         {{ form_row(registrationForm.email) }}
@@ -11,5 +12,6 @@
         <button type="submit" class="btn btn-primary mt-3">S'inscrire</button>
     {{ form_end(registrationForm) }}
 
-    {% block footer %}{% endblock %}
 {% endblock %}
+
+{% block footer %}{% endblock %}

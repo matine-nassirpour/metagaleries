@@ -1,7 +1,7 @@
 const
-    navbarSearch = document.getElementById('nav-search-bar-form'),
-    searchInput = document.getElementById('nav-search-input'),
-    navbarCover = document.getElementById('nav-cover')
+    navbarSearch = document.getElementById('navSearchBarForm'),
+    searchInput = document.getElementById('navSearchInput'),
+    navbarCover = document.getElementById('navCover')
 ;
 
 searchInput.addEventListener('focus', () => {

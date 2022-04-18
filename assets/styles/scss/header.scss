@@ -42,7 +42,7 @@
   flex: 1 1 auto;
 }
 
-#nav-belt {
+#navBelt {
   display: -webkit-box;
   display: -moz-box;
   display: -webkit-flex;
@@ -172,7 +172,7 @@
   z-index: 1;
 }
 
-#nav-main {
+#navMain {
   background-color: var(--color-secondary);
   min-height: 39px;
   max-height: 39px;
@@ -229,7 +229,7 @@
 }
 
 @media screen and (max-width: 768px) {
-  #nav-belt {
+  #navBelt {
     display: grid;
     grid-template-rows: repeat(2, 1fr);
     justify-items: center;

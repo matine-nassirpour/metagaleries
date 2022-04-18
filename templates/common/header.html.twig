@@ -1,24 +1,24 @@
 <header class="navbar-main">
     <div id="navbar" class="nav-flex">
-        <div id="nav-belt">
+        <div id="navBelt">
             <div class="nav-left">
-                <div id="nav-logo" class="nav-logo">
-                    <a href="#" class="nav-logo-link">
+                <div class="nav-logo">
+                    <a href="{{ path('app_home') }}" class="nav-logo-link">
                         <img src="{{ asset('build/images/amazon.png') }}" alt="Logo" width="100">
                     </a>
                 </div>
             </div>
             <div class="nav-fill">
                 <div class="nav-search">
-                    <form id="nav-search-bar-form" class="nav-search-form" accept-charset="UTF-8" action="#" method="GET" name="site-search" role="search">
+                    <form id="navSearchBarForm" class="nav-search-form" accept-charset="UTF-8" action="#" method="GET" name="site-search" role="search">
                         <label for="nav-search-input" hidden></label>
-                        <input class="nav-search-input" type="text" id="nav-search-input" autocomplete="off" dir="auto">
+                        <input class="nav-search-input" type="text" id="navSearchInput" autocomplete="off" dir="auto">
                         <button type="submit" class="nav-search-button"><i class="fas fa-search"></i></button>
                     </form>
                 </div>
             </div>
             <div class="nav-right">
-                <div id="nav-tools" class="nav-tools">
+                <div class="nav-tools">
                     <a href="{{ path('app_register') }}" class="nav-a">
                         <div class="nav-tool-user">
                             <i class="far fa-user"></i>
@@ -33,13 +33,13 @@
                 </div>
             </div>
         </div>
-        <div id="nav-main">
+        <div id="navMain">
             <div class="nav-items">
                 <a href="#" class="nav-a">À propos</a>
                 <a href="#" class="nav-a">Contact</a>
                 <a href="#" class="nav-a">FAQ</a>
             </div>
         </div>
-        <div id="nav-cover" class="nav-cover"></div>
+        <div id="navCover" class="nav-cover"></div>
     </div>
 </header>
