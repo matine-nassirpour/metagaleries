@@ -1,0 +1,26 @@
+.form-control {
+  padding: 3px 7px;
+  font-size: 13px;
+  height: 38px;
+}
+
+.form-group.invalid-data {
+  input {
+    border-color: #D00;
+    box-shadow: 0 0 0 3px rgb(221 0 0 / 10%) inset;
+  }
+
+  .form-error {
+    display: flex;
+    color: #C40000;
+
+    i {
+      margin: 5px 8px 0 0;
+      font-style: italic;
+    }
+  }
+}
+
+.form-error {
+  display: none;
+}

@@ -5,13 +5,67 @@
 {% block header %}{% endblock %}
 
 {% block body %}
+    <div class="p-5">
+        {{ form_start(registrationForm, {'attr': {'id': 'registrationForm'}}) }}
+            <fieldset class="form-group">
+                <label for="{{ registrationForm.email.vars.id }}">
+                    {{ registrationForm.email.vars.label }}
+                </label>
+                <input
+                    class="form-control email-input"
+                    type="text"
+                    id="{{ registrationForm.email.vars.id }}"
+                    name="{{ registrationForm.email.vars.full_name }}"
+                    value="{{ registrationForm.email.vars.value }}"
+                >
+                <span class="form-error">
+                    <i class="fa-solid fa-exclamation"></i>
+                    <small>Error message will be generated here by JS</small>
+                </span>
+            </fieldset>
+            <fieldset class="form-group">
+                <label for="{{ registrationForm.password.first.vars.id }}">
+                    {{ registrationForm.password.first.vars.label }}
+                </label>
+                <input
+                    class="form-control fist-password-input"
+                    type="password"
+                    id="{{ registrationForm.password.first.vars.id }}"
+                    name="{{ registrationForm.password.first.vars.full_name }}"
+                    autocomplete="off"
+                >
+                <span class="form-error">
+                    <i class="fa-solid fa-exclamation"></i>
+                    <small>Error message will be generated here by JS</small>
+                </span>
+            </fieldset>
+            <fieldset class="form-group">
+                <label for="{{ registrationForm.password.second.vars.id }}">
+                    {{ registrationForm.password.second.vars.label }}
+                </label>
+                <input
+                    class="form-control second-password-input"
+                    type="password"
+                    id="{{ registrationForm.password.second.vars.id }}"
+                    name="{{ registrationForm.password.second.vars.full_name }}"
+                    autocomplete="off"
+                >
+                <span class="form-error">
+                    <i class="fa-solid fa-exclamation"></i>
+                    <small>Error message will be generated here by JS</small>
+                </span>
+            </fieldset>
 
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.password) }}
-        <button type="submit" class="btn btn-primary mt-3">S'inscrire</button>
-    {{ form_end(registrationForm) }}
+            <button type="submit" class="btn btn-primary mt-3">S'inscrire</button>
 
+            {% do registrationForm.email.setRendered %}
+            {% do registrationForm.password.setRendered %}
+        {{ form_end(registrationForm) }}
+    </div>
 {% endblock %}
 
 {% block footer %}{% endblock %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('registration') }}
+{% endblock %}

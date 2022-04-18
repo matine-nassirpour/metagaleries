@@ -29,3 +29,21 @@ a {
 a, a:link, a:visited {
   color: var(--color-link);
 }
+
+input:focus, input[type=text]:focus, input[type=email]:focus,
+input[type=number]:focus, input[type=tel]:focus, input[type=password]:focus,
+input[type=search]:focus, input[type=date]:focus {
+  border-color: #E77600;
+  box-shadow: 0 0 3px 2px rgb(228 121 17 / 50%);
+}
+
+fieldset {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+
+  label {
+    font-weight: 500;
+    margin-bottom: 2px;
+  }
+}

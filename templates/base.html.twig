@@ -10,18 +10,20 @@
         {% endblock %}
     </head>
     <body class="d-flex flex-column min-vh-100">
-        {% block header %}
-            {{ include('common/header.html.twig') }}
-        {% endblock %}
+        <div id="pageContainer">
+            {% block header %}
+                {{ include('common/header.html.twig') }}
+            {% endblock %}
 
-        {% block body %}{% endblock %}
+            {% block body %}{% endblock %}
 
-        {% block footer %}
-            {{ include('common/footer.html.twig') }}
-        {% endblock %}
+            {% block footer %}
+                {{ include('common/footer.html.twig') }}
+            {% endblock %}
 
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
-        {% endblock %}
+            {% block javascripts %}
+                {{ encore_entry_script_tags('app') }}
+            {% endblock %}
+        </div>
     </body>
 </html>
