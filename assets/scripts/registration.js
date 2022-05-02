@@ -1,55 +1,102 @@
 const
     form = document.getElementById('registrationForm'),
-    formGroup = document.querySelector('.form-group'),
     emailInput = document.querySelector('.email-input'),
+    emailPattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+    emailError = document.querySelector('.email-error'),
+    emailErrorMessage = document.querySelector('.email-error small'),
     firstPasswordInput = document.querySelector('.fist-password-input'),
-    secondPasswordInput = document.querySelector('.second-password-input')
+    firstPasswordError = document.querySelector('.first-password-error'),
+    firstPasswordErrorMessage = document.querySelector('.first-password-error small'),
+    secondPasswordInput = document.querySelector('.second-password-input'),
+    secondPasswordError = document.querySelector('.second-password-error'),
+    secondPasswordErrorMessage = document.querySelector('.second-password-error small')
 ;
 
 function checkInputs() {
-    const
-        emailValue = emailInput.value.trim(),
-        firstPasswordInputValue = firstPasswordInput.value.trim(),
-        secondPasswordInputValue = secondPasswordInput.value.trim()
-    ;
-
-    if (emailValue === '') {
-        setErrorFor(emailInput, 'Saisissez votre adresse e-mail');
-    } else if (!isEmailValid(emailValue)) {
-        setErrorFor(emailInput, 'Adresse e-mail incorrect ou invalide. Veuillez corriger avant de réessayer.');
+    if (emailInput.value === '') {
+        emailInput.classList.add('error-input');
+        emailError.style.cssText = 'display: flex';
+        emailErrorMessage.innerHTML = 'Saisissez votre adresse e-mail';
     }
 
-    if (firstPasswordInputValue === '') {
-        setErrorFor(firstPasswordInput, '6 caractères minimum requis');
+    if (emailInput.value !== '' && !(emailInput.value.match(emailPattern))) {
+        emailInput.classList.add('error-input');
+        emailError.style.cssText = 'display: flex';
+        emailErrorMessage.innerHTML = 'Adresse e-mail incorrect ou invalide. Veuillez corriger avant de réessayer';
     }
 
-    if (firstPasswordInputValue !== secondPasswordInputValue) {
-        setErrorFor(secondPasswordInput, 'Les mots de passe ne correspondent pas')
+    if (firstPasswordInput.value === '' || firstPasswordInput.value.length < 6) {
+        firstPasswordInput.classList.add('error-input');
+        firstPasswordError.style.cssText = 'display: flex';
+        firstPasswordErrorMessage.innerHTML = '6 caractères minimum requis';
+    }
+
+    if (firstPasswordInput.value.length >= 6 && (firstPasswordInput.value !== secondPasswordInput.value)) {
+        secondPasswordInput.classList.add('error-input');
+        secondPasswordError.style.cssText = 'display: flex';
+        secondPasswordErrorMessage.innerHTML = 'Les mots de passe ne correspondent pas';
+    }
+
+    if (firstPasswordInput.value.length >= 6 && secondPasswordInput.value === '')  {
+        secondPasswordInput.classList.add('error-input');
+        secondPasswordError.style.cssText = 'display: flex';
+        secondPasswordErrorMessage.innerHTML = 'Saisissez à nouveau votre mot de passe';
     }
 }
 
-function setErrorFor(input, message) {
-    const
-        formGroup = input.parentElement,
-        formError = formGroup.querySelector('.form-error small')
-    ;
-
-    formError.innerText = message;
-    formGroup.className = 'form-group invalid-data';
+function checkEmail() {
+    if (emailInput.value.match(emailPattern)) {
+        emailInput.classList.remove('error-input');
+        emailError.style.cssText = 'display: none';
+    } else {
+        emailInput.classList.add('error-input');
+        emailError.style.cssText = 'display: flex';
+    }
 }
 
-function isEmailValid(email) {
-    return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email);
+function checkPasswordLength() {
+    if (firstPasswordInput.value.length >= 6) {
+        firstPasswordInput.classList.remove('error-input');
+        firstPasswordError.style.cssText = 'display: none';
+    } else {
+        firstPasswordInput.classList.add('error-input');
+        firstPasswordError.style.cssText = 'display: flex';
+    }
+}
+
+function checkPasswordValidation() {
+    if (firstPasswordInput.value === secondPasswordInput.value) {
+        secondPasswordInput.classList.remove('error-input');
+        secondPasswordError.style.cssText = 'display: none';
+    }
+}
+
+function checkForm() {
+    const inputs = form.getElementsByTagName('input');
+
+    for (let i = 0; i < inputs.length; i++) {
+        if (inputs[i].value === '') {
+            emailInput.addEventListener('input', () => {
+                checkEmail();
+            });
+
+            firstPasswordInput.addEventListener('input', () => {
+                checkPasswordLength();
+            });
+
+            secondPasswordInput.addEventListener('input', () => {
+                checkPasswordValidation();
+            });
+
+            return false;
+        }
+    }
+    return true;
 }
 
 form.addEventListener('submit', (event) => {
-    event.preventDefault();
-
-    checkInputs();
-});
-
-emailInput.addEventListener('keypress', () => {
-    if (formGroup.classList.contains('invalid-data')) {
-        formGroup.classList.remove('invalid-data');
+    if (!checkForm() || !(emailInput.value.match(emailPattern)) || firstPasswordInput.value !== secondPasswordInput.value) {
+        event.preventDefault();
+        checkInputs();
     }
 });
