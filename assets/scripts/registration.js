@@ -100,3 +100,14 @@ form.addEventListener('submit', (event) => {
         checkInputs();
     }
 });
+
+// const
+//     formRadioInput = document.getElementById('registrationFormRadio'),
+//     formBoxBody = document.querySelector('.form-box-body')
+// ;
+//
+// formRadioInput.addEventListener('click', () => {
+//     if (formRadioInput.checked) {
+//         formBoxBody.style.cssText = 'display: none';
+//     }
+// })

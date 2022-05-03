@@ -36,6 +36,10 @@ input[type=search]:focus, input[type=date]:focus {
   box-shadow: 0 0 3px 2px rgb(228 121 17 / 50%);
 }
 
+.btn-check:focus + .btn, .btn:focus {
+  box-shadow: 0 0 3px 2px rgb(228 121 17 / 50%);
+}
+
 fieldset {
   display: flex;
   flex-direction: column;
