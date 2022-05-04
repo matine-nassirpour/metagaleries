@@ -1,87 +1,64 @@
-{% extends 'base.html.twig' %}
-
-{% block title %}Inscription de Meta Galeries{% endblock %}
-
-{% block header %}
-    {{ include('common/auth_header.html.twig') }}
-{% endblock %}
-
-{% block body %}
-    <div class="auth-portal">
-        <div class="auth-portal-container">
-            {{ form_start(registrationForm, {'attr': {'id': 'registrationForm'}}) }}
-                <div class="form-box">
-                    <div class="form-box-header">
-                        <label class="form-box-header-radio" for="registrationFormRadio">
-                            <input class="radio-input" type="radio" name="" id="registrationFormRadio">
-                            <div class="radio-circle"></div>
-                            Créer un compte
-                        </label>
-                    </div>
-                    <div class="form-box-body">
-                        <fieldset class="form-group">
-                            <label for="{{ registrationForm.email.vars.id }}">
-                                {{ registrationForm.email.vars.label }}
-                            </label>
-                            <input
-                                class="form-control email-input"
-                                type="text"
-                                id="{{ registrationForm.email.vars.id }}"
-                                name="{{ registrationForm.email.vars.full_name }}"
-                                value="{{ registrationForm.email.vars.value }}"
-                                autofocus
-                            >
-                            <span class="email-error">
-                                <i class="fa-solid fa-exclamation"></i>
-                                <small>Error message will be generated here by JS</small>
-                            </span>
-                        </fieldset>
-                        <fieldset class="form-group">
-                            <label for="{{ registrationForm.password.first.vars.id }}">
-                                {{ registrationForm.password.first.vars.label }}
-                            </label>
-                            <input
-                                class="form-control fist-password-input"
-                                type="password"
-                                id="{{ registrationForm.password.first.vars.id }}"
-                                name="{{ registrationForm.password.first.vars.full_name }}"
-                                autocomplete="off"
-                            >
-                            <span class="first-password-error">
-                                <i class="fa-solid fa-exclamation"></i>
-                                <small>Error message will be generated here by JS</small>
-                            </span>
-                        </fieldset>
-                        <fieldset class="form-group">
-                            <label for="{{ registrationForm.password.second.vars.id }}">
-                                {{ registrationForm.password.second.vars.label }}
-                            </label>
-                            <input
-                                class="form-control second-password-input"
-                                type="password"
-                                id="{{ registrationForm.password.second.vars.id }}"
-                                name="{{ registrationForm.password.second.vars.full_name }}"
-                                autocomplete="off"
-                            >
-                            <span class="second-password-error">
-                                <i class="fa-solid fa-exclamation"></i>
-                                <small>Error message will be generated here by JS</small>
-                            </span>
-                        </fieldset>
-
-                        <button type="submit" class="btn sign-up-btn mt-1">Continuer</button>
-
-                        {% do registrationForm.email.setRendered %}
-                        {% do registrationForm.password.setRendered %}
-                    </div>
-                </div>
-            {{ form_end(registrationForm) }}
-        </div>
+{{ form_start(registrationForm, {'action': path('app_register'), 'attr': {'id': 'registrationForm'}}) }}
+    <div class="form-box-header registration-form-header">
+        <label class="form-box-header-radio" for="registrationFormRadio">
+            <input class="radio-input" type="radio" name="" id="registrationFormRadio">
+            <div class="radio-circle"></div>
+            Créer un compte
+        </label>
     </div>
-{% endblock %}
+    <div class="form-box-body registration-form-body">
+        <fieldset class="form-group">
+            <label for="{{ registrationForm.email.vars.id }}">
+                {{ registrationForm.email.vars.label }}
+            </label>
+            <input
+                class="form-control email-input"
+                type="text"
+                id="{{ registrationForm.email.vars.id }}"
+                name="{{ registrationForm.email.vars.full_name }}"
+                value="{{ registrationForm.email.vars.value }}"
+            >
+            <span class="email-error">
+                <i class="fa-solid fa-exclamation"></i>
+                <small>Error message will be generated here by JS</small>
+            </span>
+        </fieldset>
+        <fieldset class="form-group">
+            <label for="{{ registrationForm.password.first.vars.id }}">
+                {{ registrationForm.password.first.vars.label }}
+            </label>
+            <input
+                class="form-control fist-password-input"
+                type="password"
+                id="{{ registrationForm.password.first.vars.id }}"
+                name="{{ registrationForm.password.first.vars.full_name }}"
+                autocomplete="off"
+            >
+            <span class="first-password-error">
+                <i class="fa-solid fa-exclamation"></i>
+                <small>Error message will be generated here by JS</small>
+            </span>
+        </fieldset>
+        <fieldset class="form-group">
+            <label for="{{ registrationForm.password.second.vars.id }}">
+                {{ registrationForm.password.second.vars.label }}
+            </label>
+            <input
+                class="form-control second-password-input"
+                type="password"
+                id="{{ registrationForm.password.second.vars.id }}"
+                name="{{ registrationForm.password.second.vars.full_name }}"
+                autocomplete="off"
+            >
+            <span class="second-password-error">
+                <i class="fa-solid fa-exclamation"></i>
+                <small>Error message will be generated here by JS</small>
+            </span>
+        </fieldset>
 
-{% block footer %}{% endblock %}
+        <button type="submit" class="btn primary-button mt-1">Continuer</button>
+    </div>
 
-{% block javascripts %}
-    {{ encore_entry_script_tags('registration') }}
-{% endblock %}
+    {% do registrationForm.email.setRendered %}
+    {% do registrationForm.password.setRendered %}
+{{ form_end(registrationForm) }}

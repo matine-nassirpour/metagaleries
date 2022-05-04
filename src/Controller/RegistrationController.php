@@ -28,6 +28,10 @@ class RegistrationController extends AbstractController
         UserPasswordEncoderInterface $passwordEncoder
     ): Response
     {
+        if ($this->getUser()) {
+            return $this->redirectToRoute('app_home');
+        }
+
         $user = new User();
         $form = $this->createForm(RegistrationType::class, $user);
 
@@ -38,6 +42,8 @@ class RegistrationController extends AbstractController
 
             $this->entityManager->persist($user);
             $this->entityManager->flush();
+
+            return $this->redirectToRoute('app_home');
         }
 
         return $this->render('registration/index.html.twig', [

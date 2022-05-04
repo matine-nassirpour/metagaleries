@@ -101,13 +101,31 @@ form.addEventListener('submit', (event) => {
     }
 });
 
-// const
-//     formRadioInput = document.getElementById('registrationFormRadio'),
-//     formBoxBody = document.querySelector('.form-box-body')
-// ;
-//
-// formRadioInput.addEventListener('click', () => {
-//     if (formRadioInput.checked) {
-//         formBoxBody.style.cssText = 'display: none';
-//     }
-// })
+const
+    loginFormRadioInput = document.getElementById('loginFormRadio'),
+    registrationFormRadioInput = document.getElementById('registrationFormRadio'),
+    loginFormBody = document.querySelector('.login-form-body'),
+    registrationFormBody = document.querySelector('.registration-form-body'),
+    loginFormHeader = document.querySelector('.login-form-header'),
+    registrationFormHeader = document.querySelector('.registration-form-header')
+;
+
+loginFormRadioInput.addEventListener('click', () => {
+    if (loginFormRadioInput.checked) {
+        loginFormBody.style.cssText = 'display: block';
+        registrationFormRadioInput.checked = false;
+        registrationFormBody.style.cssText = 'display: none';
+        loginFormHeader.classList.remove('js-form-box-header');
+        registrationFormHeader.classList.add('js-form-box-header');
+    }
+});
+
+registrationFormRadioInput.addEventListener('click', () => {
+   if (registrationFormRadioInput.checked) {
+       registrationFormBody.style.cssText = 'display: block';
+       loginFormRadioInput.checked = false;
+       loginFormBody.style.cssText = 'display: none';
+       registrationFormHeader.classList.remove('js-form-box-header');
+       loginFormHeader.classList.add('js-form-box-header');
+   }
+});

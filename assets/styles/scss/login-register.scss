@@ -9,7 +9,7 @@
   margin: 0 auto;
 }
 
-.form-box {
+.forms-box {
   border: 1px solid #DDDDDD;
   border-radius: 4px;
   background-color: #FFFFFF;
@@ -23,7 +23,7 @@
   display: inline-flex;
   align-items: center;
   cursor: pointer;
-  font-size: 28px;
+  font-size: 20px;
   line-height: 1.2;
 }
 
@@ -39,6 +39,8 @@
   margin-right: 10px;
   box-sizing: border-box;
   padding: 4px;
+  background-color: #FFFFFF;
+  font-size: 28px;
 
   &::after {
     content: "";
@@ -58,13 +60,21 @@
 
 .form-box-body {
   border-radius: 4px;
-  padding: 14px 18px;
+  padding: 0 18px 25px;
 }
 
 .form-control {
   padding: 3px 7px;
   font-size: 13px;
   height: 31px;
+}
+
+.js-form-box-header {
+  background-color: #F3F3F3;
+}
+
+.registration-form-body {
+  display: none;
 }
 
 .email-error, .first-password-error, .second-password-error {
@@ -80,21 +90,4 @@
 .error-input {
   border-color: #D00 !important;
   box-shadow: 0 0 0 3px rgb(221 0 0 / 10%) inset !important;
-}
-
-.sign-up-btn {
-  font-size: 14px;
-  line-height: 14px;
-  width: 100%;
-  height: 33px;
-  border-style: solid;
-  border-width: 1px;
-  border-color: #a88734 #9c7e31 #846a29;
-  background: #f3d078;
-  background: -webkit-linear-gradient(top,#f7dfa5,#f0c14b);
-  background: linear-gradient(to bottom,#f7dfa5,#f0c14b);
-
-  &:hover {
-    background: linear-gradient(to bottom,#f5d78e,#eeb933);
-  }
 }
