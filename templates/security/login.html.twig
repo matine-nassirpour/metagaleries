@@ -3,16 +3,18 @@
 {% block title %}Connexion Meta Galeries{% endblock %}
 
 {% block header %}
-    {{ include('common/auth_header.html.twig') }}
+    {{ include('common/login_register_header.html.twig') }}
 {% endblock %}
 
+{% block bodyClass %}login-register-background{% endblock %}
+
 {% block body %}
-    <div class="auth-portal">
-        <div class="auth-portal-container">
+    <div class="login-register-portal">
+        <div class="portal-container">
             <div class="forms-box">
                 {{ render(controller('App\\Controller\\RegistrationController::register')) }}
 
-                <form method="post">
+                <form id="loginForm" method="POST">
                     {% if error %}
                         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
                     {% endif %}
@@ -27,19 +29,36 @@
                     <div class="form-box-body login-form-body">
                         <fieldset class="form-group">
                             <label for="inputEmail">Adresse e-mail</label>
-                            <input class="form-control" type="text" value="{{ last_username }}" name="email" id="inputEmail" autocomplete="email" autofocus>
+                            <input
+                                class="form-control login-form-email-input"
+                                type="text" value="{{ last_username }}"
+                                id="inputEmail"
+                                name="email"
+                                autocomplete="email"
+                                autofocus
+                            >
+                            <span class="login-email-error">
+                                <i class="fa-solid fa-exclamation"></i>
+                                <small>Error message will be generated here by JS</small>
+                            </span>
                         </fieldset>
                         <fieldset>
                             <label for="inputPassword">Mot de passe</label>
-                            <input class="form-control" type="password" name="password" id="inputPassword" autocomplete="current-password">
+                            <input
+                                class="form-control login-password-input"
+                                type="password" name="password"
+                                id="inputPassword"
+                                autocomplete="current-password"
+                            >
+                            <span class="login-password-error">
+                                <i class="fa-solid fa-exclamation"></i>
+                                <small>Error message will be generated here by JS</small>
+                            </span>
                         </fieldset>
 
                         <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
                         {#
-                            Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
-                            See https://symfony.com/doc/current/security/remember_me.html
-
                             <div class="checkbox mb-3">
                                 <label>
                                     <input type="checkbox" name="_remember_me"> Remember me

@@ -1,10 +1,14 @@
-.auth-portal {
+.login-register-background {
+  //background-color: #F6F6F6;
+}
+
+.login-register-portal {
   max-width: 700px;
   margin: auto;
   padding: 14px 18px;
 }
 
-.auth-portal-container {
+.portal-container {
   max-width: 350px;
   margin: 0 auto;
 }
@@ -19,11 +23,17 @@
   padding: 10px 18px;
 }
 
+.registration-form-header {
+  background-color: #F3F3F3;
+  border-bottom: 1px solid #DDDDDD;
+}
+
 .form-box-header-radio {
   display: inline-flex;
   align-items: center;
   cursor: pointer;
-  font-size: 20px;
+  font-family: "Source Sans Pro SemiBold", Arial, sans-serif;
+  font-size: 18px;
   line-height: 1.2;
 }
 
@@ -34,7 +44,7 @@
 .radio-circle {
   width: .7em;
   height: .7em;
-  border: 1px solid #CED4DA;
+  border: 1px solid #A9A9A9;
   border-radius: 50%;
   margin-right: 10px;
   box-sizing: border-box;
@@ -69,15 +79,11 @@
   height: 31px;
 }
 
-.js-form-box-header {
-  background-color: #F3F3F3;
-}
-
 .registration-form-body {
   display: none;
 }
 
-.email-error, .first-password-error, .second-password-error {
+.login-email-error, .login-password-error, .register-email-error, .first-password-error, .second-password-error {
   display: none;
   color: #C40000;
 

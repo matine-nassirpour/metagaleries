@@ -1,9 +1,13 @@
+/*----------------------------------*\
+  >>> Registration Form
+\*----------------------------------*/
+
 const
-    form = document.getElementById('registrationForm'),
-    emailInput = document.querySelector('.email-input'),
+    registrationForm = document.getElementById('registrationForm'),
+    registerEmail = document.querySelector('.registration-form-email-input'),
     emailPattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-    emailError = document.querySelector('.email-error'),
-    emailErrorMessage = document.querySelector('.email-error small'),
+    registerEmailError = document.querySelector('.register-email-error'),
+    registerEmailErrorMessage = document.querySelector('.register-email-error small'),
     firstPasswordInput = document.querySelector('.fist-password-input'),
     firstPasswordError = document.querySelector('.first-password-error'),
     firstPasswordErrorMessage = document.querySelector('.first-password-error small'),
@@ -13,16 +17,16 @@ const
 ;
 
 function checkInputs() {
-    if (emailInput.value === '') {
-        emailInput.classList.add('error-input');
-        emailError.style.cssText = 'display: flex';
-        emailErrorMessage.innerHTML = 'Saisissez votre adresse e-mail';
+    if (registerEmail.value === '') {
+        registerEmail.classList.add('error-input');
+        registerEmailError.style.cssText = 'display: flex';
+        registerEmailErrorMessage.innerHTML = 'Saisissez votre adresse e-mail';
     }
 
-    if (emailInput.value !== '' && !(emailInput.value.match(emailPattern))) {
-        emailInput.classList.add('error-input');
-        emailError.style.cssText = 'display: flex';
-        emailErrorMessage.innerHTML = 'Adresse e-mail incorrect ou invalide. Veuillez corriger avant de réessayer';
+    if (registerEmail.value !== '' && !(registerEmail.value.match(emailPattern))) {
+        registerEmail.classList.add('error-input');
+        registerEmailError.style.cssText = 'display: flex';
+        registerEmailErrorMessage.innerHTML = 'Adresse e-mail incorrect ou invalide. Veuillez corriger avant de réessayer';
     }
 
     if (firstPasswordInput.value === '' || firstPasswordInput.value.length < 6) {
@@ -45,12 +49,12 @@ function checkInputs() {
 }
 
 function checkEmail() {
-    if (emailInput.value.match(emailPattern)) {
-        emailInput.classList.remove('error-input');
-        emailError.style.cssText = 'display: none';
+    if (registerEmail.value.match(emailPattern)) {
+        registerEmail.classList.remove('error-input');
+        registerEmailError.style.cssText = 'display: none';
     } else {
-        emailInput.classList.add('error-input');
-        emailError.style.cssText = 'display: flex';
+        registerEmail.classList.add('error-input');
+        registerEmailError.style.cssText = 'display: flex';
     }
 }
 
@@ -72,11 +76,11 @@ function checkPasswordValidation() {
 }
 
 function checkForm() {
-    const inputs = form.getElementsByTagName('input');
+    const inputs = registrationForm.getElementsByTagName('input');
 
     for (let i = 0; i < inputs.length; i++) {
         if (inputs[i].value === '') {
-            emailInput.addEventListener('input', () => {
+            registerEmail.addEventListener('input', () => {
                 checkEmail();
             });
 
@@ -94,16 +98,69 @@ function checkForm() {
     return true;
 }
 
-form.addEventListener('submit', (event) => {
-    if (!checkForm() || !(emailInput.value.match(emailPattern)) || firstPasswordInput.value !== secondPasswordInput.value) {
+registrationForm.addEventListener('submit', (event) => {
+    if (!checkForm() || !(registerEmail.value.match(emailPattern)) || firstPasswordInput.value !== secondPasswordInput.value) {
         event.preventDefault();
         checkInputs();
     }
 });
 
+/*----------------------------------*\
+  >>> Login Form
+\*----------------------------------*/
+
+const
+    loginForm = document.getElementById('loginForm'),
+    loginEmailInput = document.querySelector('.login-form-email-input'),
+    loginEmailError = document.querySelector('.login-email-error'),
+    loginEmailErrorMessage = document.querySelector('.login-email-error small'),
+    loginPasswordInput = document.querySelector('.login-password-input'),
+    loginPasswordError = document.querySelector('.login-password-error'),
+    loginPasswordErrorMessage = document.querySelector('.login-password-error small')
+;
+
+function checkLoginEmail() {
+    if ((loginEmailInput.value === '') || (!loginEmailInput.value.match(emailPattern))) {
+        loginEmailInput.classList.add('error-input');
+        loginEmailError.style.cssText = 'display: flex';
+
+        if (loginEmailInput.value === '') {
+            loginEmailErrorMessage.innerHTML = 'Saisissez votre adresse e-mail';
+        } else if ((!loginEmailInput.value.match(emailPattern))) {
+            loginEmailErrorMessage.innerHTML = 'Adresse e-mail incorrect ou invalide. Veuillez corriger avant de réessayer';
+        }
+
+        return false;
+    }
+
+    return true;
+}
+
+// function checkLoginPassword() {
+//     if (loginPasswordInput.value === '') {
+//         loginPasswordInput.classList.add('error-input');
+//         loginPasswordError.style.cssText = 'display: flex';
+//         loginPasswordErrorMessage.innerHTML = 'Saisissez votre mot de passe';
+//
+//         return false;
+//     }
+//
+//     return true
+// }
+
+loginForm.addEventListener('submit', (event) => {
+    if (!checkLoginEmail()) {
+        event.preventDefault();
+    }
+});
+
+/*----------------------------------*\
+  >>> Login Register Portal
+\*----------------------------------*/
+
 const
     loginFormRadioInput = document.getElementById('loginFormRadio'),
-    registrationFormRadioInput = document.getElementById('registrationFormRadio'),
+    registrationFormRadio = document.getElementById('registrationFormRadio'),
     loginFormBody = document.querySelector('.login-form-body'),
     registrationFormBody = document.querySelector('.registration-form-body'),
     loginFormHeader = document.querySelector('.login-form-header'),
@@ -113,19 +170,21 @@ const
 loginFormRadioInput.addEventListener('click', () => {
     if (loginFormRadioInput.checked) {
         loginFormBody.style.cssText = 'display: block';
-        registrationFormRadioInput.checked = false;
+        registrationFormRadio.checked = false;
         registrationFormBody.style.cssText = 'display: none';
-        loginFormHeader.classList.remove('js-form-box-header');
-        registrationFormHeader.classList.add('js-form-box-header');
+        loginFormHeader.style.cssText = 'background-color: transparent; border: none';
+        registrationFormHeader.style.cssText = 'background-color: #F3F3F3; border-top: 1px solid #DDDDDD';
+        loginEmailInput.focus();
     }
 });
 
-registrationFormRadioInput.addEventListener('click', () => {
-   if (registrationFormRadioInput.checked) {
+registrationFormRadio.addEventListener('click', () => {
+   if (registrationFormRadio.checked) {
        registrationFormBody.style.cssText = 'display: block';
        loginFormRadioInput.checked = false;
        loginFormBody.style.cssText = 'display: none';
-       registrationFormHeader.classList.remove('js-form-box-header');
-       loginFormHeader.classList.add('js-form-box-header');
+       registrationFormHeader.style.cssText = 'background-color: transparent; border: none';
+       loginFormHeader.style.cssText = 'background-color: #F3F3F3; border-top: 1px solid #DDDDDD';
+       registerEmail.focus();
    }
 });

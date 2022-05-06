@@ -68,3 +68,10 @@ fieldset {
     font-size: 13px;
   }
 }
+
+.alert-danger {
+  color: #C40000;
+  background-color: #FFFFFF;
+  border-color: #C40000;
+  box-shadow: 0 0 0 .3rem #FCF4F4 inset;
+}
