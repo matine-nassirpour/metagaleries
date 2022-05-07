@@ -4,57 +4,55 @@
 
 const
     registrationForm = document.getElementById('registrationForm'),
-    registerEmail = document.querySelector('.registration-form-email-input'),
+    registerEmailInput = document.querySelector('.registration-form-email-input'),
     emailPattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
     registerEmailError = document.querySelector('.register-email-error'),
-    registerEmailErrorMessage = document.querySelector('.register-email-error small'),
     firstPasswordInput = document.querySelector('.fist-password-input'),
     firstPasswordError = document.querySelector('.first-password-error'),
-    firstPasswordErrorMessage = document.querySelector('.first-password-error small'),
     secondPasswordInput = document.querySelector('.second-password-input'),
-    secondPasswordError = document.querySelector('.second-password-error'),
-    secondPasswordErrorMessage = document.querySelector('.second-password-error small')
+    secondPasswordError = document.querySelector('.second-password-error')
 ;
 
-function checkInputs() {
-    if (registerEmail.value === '') {
-        registerEmail.classList.add('error-input');
-        registerEmailError.style.cssText = 'display: flex';
-        registerEmailErrorMessage.innerHTML = 'Saisissez votre adresse e-mail';
-    }
+function setErrorForInvalidInput(input, error, message) {
+    const
+        fieldset = input.parentElement,
+        smallError = fieldset.querySelector('span small')
+    ;
 
-    if (registerEmail.value !== '' && !(registerEmail.value.match(emailPattern))) {
-        registerEmail.classList.add('error-input');
-        registerEmailError.style.cssText = 'display: flex';
-        registerEmailErrorMessage.innerHTML = 'Adresse e-mail incorrect ou invalide. Veuillez corriger avant de réessayer';
-    }
+    input.classList.add('error-input');
+    error.style.cssText = 'display: flex';
+    smallError.innerHTML = message;
+}
 
-    if (firstPasswordInput.value === '' || firstPasswordInput.value.length < 6) {
-        firstPasswordInput.classList.add('error-input');
-        firstPasswordError.style.cssText = 'display: flex';
-        firstPasswordErrorMessage.innerHTML = '6 caractères minimum requis';
-    }
-
-    if (firstPasswordInput.value.length >= 6 && (firstPasswordInput.value !== secondPasswordInput.value)) {
-        secondPasswordInput.classList.add('error-input');
-        secondPasswordError.style.cssText = 'display: flex';
-        secondPasswordErrorMessage.innerHTML = 'Les mots de passe ne correspondent pas';
-    }
-
-    if (firstPasswordInput.value.length >= 6 && secondPasswordInput.value === '')  {
-        secondPasswordInput.classList.add('error-input');
-        secondPasswordError.style.cssText = 'display: flex';
-        secondPasswordErrorMessage.innerHTML = 'Saisissez à nouveau votre mot de passe';
+function myFirstRealFunction(input, error) {
+    if (input.value.match(emailPattern)) {
+        input.classList.remove('error-input');
+        error.style.cssText = 'display: none';
+    } else {
+        input.classList.add('error-input');
+        error.style.cssText = 'display: flex';
     }
 }
 
-function checkEmail() {
-    if (registerEmail.value.match(emailPattern)) {
-        registerEmail.classList.remove('error-input');
-        registerEmailError.style.cssText = 'display: none';
-    } else {
-        registerEmail.classList.add('error-input');
-        registerEmailError.style.cssText = 'display: flex';
+function checkInputs() {
+    if (registerEmailInput.value === '') {
+        setErrorForInvalidInput(registerEmailInput, registerEmailError, 'Saisissez votre adresse e-mail');
+    }
+
+    if (registerEmailInput.value !== '' && !(registerEmailInput.value.match(emailPattern))) {
+        setErrorForInvalidInput(registerEmailInput, registerEmailError, 'Adresse e-mail incorrect ou invalide. Veuillez corriger avant de réessayer');
+    }
+
+    if (firstPasswordInput.value === '' || firstPasswordInput.value.length < 6) {
+        setErrorForInvalidInput(firstPasswordInput, firstPasswordError, '6 caractères minimum requis');
+    }
+
+    if (firstPasswordInput.value.length >= 6 && (firstPasswordInput.value !== secondPasswordInput.value)) {
+        setErrorForInvalidInput(secondPasswordInput, secondPasswordError, 'Les mots de passe ne correspondent pas');
+    }
+
+    if (firstPasswordInput.value.length >= 6 && secondPasswordInput.value === '')  {
+        setErrorForInvalidInput(secondPasswordInput, secondPasswordError, 'Saisissez à nouveau votre mot de passe');
     }
 }
 
@@ -80,8 +78,8 @@ function checkForm() {
 
     for (let i = 0; i < inputs.length; i++) {
         if (inputs[i].value === '') {
-            registerEmail.addEventListener('input', () => {
-                checkEmail();
+            registerEmailInput.addEventListener('input', () => {
+                myFirstRealFunction(registerEmailInput, registerEmailError);
             });
 
             firstPasswordInput.addEventListener('input', () => {
@@ -99,7 +97,7 @@ function checkForm() {
 }
 
 registrationForm.addEventListener('submit', (event) => {
-    if (!checkForm() || !(registerEmail.value.match(emailPattern)) || firstPasswordInput.value !== secondPasswordInput.value) {
+    if (!checkForm() || !(registerEmailInput.value.match(emailPattern)) || firstPasswordInput.value !== secondPasswordInput.value) {
         event.preventDefault();
         checkInputs();
     }
@@ -136,21 +134,35 @@ function checkLoginEmail() {
     return true;
 }
 
-// function checkLoginPassword() {
-//     if (loginPasswordInput.value === '') {
-//         loginPasswordInput.classList.add('error-input');
-//         loginPasswordError.style.cssText = 'display: flex';
-//         loginPasswordErrorMessage.innerHTML = 'Saisissez votre mot de passe';
-//
-//         return false;
-//     }
-//
-//     return true
-// }
+function checkLoginPassword() {
+    if (loginPasswordInput.value === '') {
+        loginPasswordInput.classList.add('error-input');
+        loginPasswordError.style.cssText = 'display: flex';
+        loginPasswordErrorMessage.innerHTML = 'Saisissez votre mot de passe';
+
+        return false;
+    }
+
+    return true
+}
+
+function checkLoginInputs() {
+    const inputs = loginForm.querySelectorAll('input[type=text], input[type=password]');
+
+    for (let i = 0; i < inputs.length; i++) {
+        if (inputs[i].value === '') {
+            loginEmailInput.addEventListener('input', () => {
+                myFirstRealFunction(loginEmailInput, loginEmailError);
+            });
+        }
+    }
+}
 
 loginForm.addEventListener('submit', (event) => {
-    if (!checkLoginEmail()) {
+    if (!checkLoginEmail() || !checkLoginPassword()) {
         event.preventDefault();
+
+        checkLoginInputs();
     }
 });
 
@@ -185,6 +197,6 @@ registrationFormRadio.addEventListener('click', () => {
        loginFormBody.style.cssText = 'display: none';
        registrationFormHeader.style.cssText = 'background-color: transparent; border: none';
        loginFormHeader.style.cssText = 'background-color: #F3F3F3; border-top: 1px solid #DDDDDD';
-       registerEmail.focus();
+       registerEmailInput.focus();
    }
 });
