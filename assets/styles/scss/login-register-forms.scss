@@ -28,6 +28,16 @@
   border-bottom: 1px solid #DDDDDD;
 }
 
+.active-form-header {
+  background-color: transparent;
+  border: none;
+}
+
+.inactive-form-header {
+  background-color: #F3F3F3;
+  border-top: 1px solid #DDDDDD;
+}
+
 .form-box-header-radio {
   display: inline-flex;
   align-items: center;

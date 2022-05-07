@@ -14,7 +14,7 @@
             <div class="forms-box">
                 {{ render(controller('App\\Controller\\RegistrationController::register')) }}
 
-                <form id="loginForm" method="POST">
+                <form id="loginForm" method="POST" action="{{ path('app_login') }}">
                     {% if error %}
                         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
                     {% endif %}
