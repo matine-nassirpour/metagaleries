@@ -42,7 +42,7 @@ class User implements UserInterface
     private string $firstName;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255)
      */
     private string $lastName;
 

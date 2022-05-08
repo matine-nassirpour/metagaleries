@@ -8,6 +8,23 @@
     </div>
     <div class="form-box-body registration-form-body">
         <fieldset class="form-group">
+            <label for="{{ registrationForm.lastName.vars.id }}">
+                {{ registrationForm.lastName.vars.label }}
+            </label>
+            <input
+                class="form-control registration-form-lastname-input"
+                type="text"
+                id="{{ registrationForm.lastName.vars.id }}"
+                name="{{ registrationForm.lastName.vars.full_name }}"
+                value="{{ registrationForm.lastName.vars.value }}"
+                maxlength="50"
+            >
+            <span class="register-lastname-error">
+                <i class="fa-solid fa-exclamation"></i>
+                <small>Error message will be generated here by JS</small>
+            </span>
+        </fieldset>
+        <fieldset class="form-group">
             <label for="{{ registrationForm.email.vars.id }}">
                 {{ registrationForm.email.vars.label }}
             </label>
@@ -59,6 +76,7 @@
         <button type="submit" class="btn primary-button mt-1">Continuer</button>
     </div>
 
+    {% do registrationForm.lastName.setRendered %}
     {% do registrationForm.email.setRendered %}
     {% do registrationForm.password.setRendered %}
 {{ form_end(registrationForm) }}

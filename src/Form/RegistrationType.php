@@ -9,12 +9,20 @@ use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\Length;
 
 class RegistrationType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
+            ->add('lastName', null, [
+                'label' => 'Votre nom',
+                'required' => true,
+                'constraints' => new Length([
+                    'max' => 50
+                ])
+            ])
             ->add('email', EmailType::class, [
                 'label' => 'Adresse e-mail',
                 'required' => true,

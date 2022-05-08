@@ -1,5 +1,7 @@
 const
     registrationForm = document.getElementById('registrationForm'),
+    registerLastnameInput = document.querySelector('.registration-form-lastname-input'),
+    registerLastnameError = document.querySelector('.register-lastname-error'),
     registerEmailInput = document.querySelector('.registration-form-email-input'),
     emailPattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
     registerEmailError = document.querySelector('.register-email-error'),
@@ -26,6 +28,10 @@ function removeErrorFromInput(input, error) {
 }
 
 function checkRegistrationFormInputs() {
+    if (registerLastnameInput.value === '') {
+        setErrorToInvalidInput(registerLastnameInput, registerLastnameError, 'Saisissez votre nom');
+    }
+
     if (registerEmailInput.value === '') {
         setErrorToInvalidInput(registerEmailInput, registerEmailError, 'Saisissez votre adresse e-mail');
     }
@@ -52,6 +58,12 @@ function checkRegistrationForm() {
 
     for (let i = 0; i < inputs.length; i++) {
         if (inputs[i].value === '') {
+            registerLastnameInput.addEventListener('input', () => {
+               if (registerLastnameInput.value !== '') {
+                   removeErrorFromInput(registerLastnameInput, registerLastnameError);
+               }
+            });
+
             registerEmailInput.addEventListener('input', () => {
                 if (registerEmailInput.value.match(emailPattern)) {
                     removeErrorFromInput(registerEmailInput, registerEmailError);
@@ -150,7 +162,7 @@ const
     registrationFormHeader = document.querySelector('.registration-form-header')
 ;
 
-function handleForms(formBody, formHeader, emailInput, otherFormRadio, otherFormBody, otherFormHeader) {
+function handleForms(formBody, formHeader, focusInput, otherFormRadio, otherFormBody, otherFormHeader) {
     formBody.style.cssText = 'display: block';
     formHeader.classList.add('active-form-header');
     formHeader.classList.remove('inactive-form-header');
@@ -158,7 +170,7 @@ function handleForms(formBody, formHeader, emailInput, otherFormRadio, otherForm
     otherFormBody.style.cssText = 'display: none';
     otherFormHeader.classList.add('inactive-form-header');
     otherFormHeader.classList.remove('active-form-header');
-    emailInput.focus();
+    focusInput.focus();
 }
 
 loginFormRadio.addEventListener('click', () => {
@@ -169,6 +181,6 @@ loginFormRadio.addEventListener('click', () => {
 
 registrationFormRadio.addEventListener('click', () => {
    if (registrationFormRadio.checked) {
-       handleForms(registrationFormBody, registrationFormHeader, registerEmailInput, loginFormRadio, loginFormBody, loginFormHeader);
+       handleForms(registrationFormBody, registrationFormHeader, registerLastnameInput, loginFormRadio, loginFormBody, loginFormHeader);
    }
 });
