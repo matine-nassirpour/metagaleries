@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Votre compte Meta Galeries{% endblock %}
+
+{% block body %}
+    <div class="account-container">
+        <div class="container-xxl">
+            <div class="account-head">
+                <h3>Votre compte</h3>
+            </div>
+            <div class="account-row">
+                <div class="account-cell">
+                    <a href="#">
+                        <div class="cell-box">
+                            <div class="cell-box-inner">
+                                <div class="cell-box-inner-row">
+                                    <div class="cell-box-img-container">
+                                        <img src="{{ asset('build/images/order.png') }}" alt="Vos commandes">
+                                    </div>
+                                    <div class="cell-box-content-container">
+                                        <h5>Vos commandes</h5>
+                                        <div>
+                                            <span class="cell-box-text">Suivre, retourner ou acheter à nouveau</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="account-cell">
+                    <a href="#">
+                        <div class="cell-box">
+                            <div class="cell-box-inner">
+                                <div class="cell-box-inner-row">
+                                    <div class="cell-box-img-container">
+                                        <img src="{{ asset('build/images/security.png') }}" alt="Connexion & sécurité">
+                                    </div>
+                                    <div class="cell-box-content-container">
+                                        <h5>Connexion & sécurité</h5>
+                                        <div>
+                                            <span class="cell-box-text">Modifier l'adresse e-mail, le nom et le numéro de téléphone mobile</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="account-cell">
+                    <a href="#">
+                        <div class="cell-box">
+                            <div class="cell-box-inner">
+                                <div class="cell-box-inner-row">
+                                    <div class="cell-box-img-container">
+                                        <img src="{{ asset('build/images/address.png') }}" alt="Adresses">
+                                    </div>
+                                    <div class="cell-box-content-container">
+                                        <h5>Adresses</h5>
+                                        <div>
+                                            <span class="cell-box-text">Modifier les adresses et les préférences de livraison des commandes et des cadeaux</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

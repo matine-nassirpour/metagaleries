@@ -1,0 +1,129 @@
+.account-container {
+  padding: 18px;
+}
+
+.account-head {
+  margin-bottom: 12px;
+
+  h3 {
+    margin-bottom: 0;
+  }
+}
+
+.account-row {
+  display: table;
+  height: 100%;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.account-cell {
+  display: table-cell;
+  height: 100%;
+  max-width: 340px;
+  padding-left: 20px;
+
+  &:first-child {
+    padding-left: 0;
+  }
+}
+
+.cell-box {
+  display: block;
+  height: 100%;
+  background-color: #FFFFFF;
+  border: 1px solid #D5D9D9;
+  border-radius: 8px;
+
+  &:hover {
+    background-color: #EEE;
+  }
+}
+
+.cell-box-inner {
+  position: relative;
+  border-radius: 8px;
+  padding: 14px 18px;
+}
+
+.cell-box-inner-row {
+  width: 100%;
+
+  &:after, &:before {
+    content: "";
+    display: table;
+    line-height: 0;
+    font-size: 0;
+  }
+
+  &:after {
+    clear: both;
+  }
+}
+
+.cell-box-img-container {
+  overflow: visible;
+  float: left;
+  min-height: 1px;
+  margin-right: 2%;
+  width: 23.448%;
+
+  img {
+    vertical-align: top;
+    max-width: 100%;
+    border: 0;
+  }
+}
+
+.cell-box-content-container {
+  margin: 0;
+  float: right;
+  min-height: 1px;
+  overflow: visible;
+  width: 74.448%;
+
+  h5 {
+    color: #111;
+    font-size: 17px;
+    margin-bottom: 0;
+    font-weight: 400;
+    line-height: 32px;
+  }
+}
+
+.cell-box-text {
+  color: #565959;
+}
+
+@media screen and (max-width: 768px) {
+  .account-head h3 {
+    max-width: 340px;
+    margin: 0 auto;
+  }
+
+  .account-row {
+    display: grid;
+  }
+
+  .account-cell {
+    padding: 0 0 20px;
+    margin: auto;
+
+    &:last-child {
+      padding-bottom: 0;
+    }
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .account-container {
+    padding: 18px 5px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .cell-box-content-container h5 {
+    line-height: 20px;
+    margin-bottom: 5px;
+  }
+}
