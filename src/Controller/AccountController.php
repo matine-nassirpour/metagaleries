@@ -6,13 +6,24 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+/**
+ * @Route("/account", name="app_")
+ */
 class AccountController extends AbstractController
 {
     /**
-     * @Route("/account", name="app_account")
+     * @Route("", name="account")
      */
     public function index(): Response
     {
         return $this->render('account/index.html.twig');
+    }
+
+    /**
+     * @Route("/change-password", name="change_password")
+     */
+    public function security(): Response
+    {
+        return $this->render('account/security.html.twig');
     }
 }
