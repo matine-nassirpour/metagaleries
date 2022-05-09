@@ -29,10 +29,10 @@
                                         <div class="item-row">
                                             <div class="row-info">
                                                 <div class="row-info-title">
-                                                    <span>Nom :</span>
+                                                    <span>Nom pet prénom :</span>
                                                 </div>
                                                 <div class="row-user-data">
-                                                    <span>{{ app.user.lastName }}</span>
+                                                    <span>{{ app.user.lastName|upper }}</span>
                                                 </div>
                                             </div>
                                             <div class="row-button">
@@ -60,6 +60,27 @@
                                                     <span class="a-button-inner">
                                                         <a href="#">
                                                             {# TODO: the button show "Ajouter" if there is no number saved, else it shows "Modifier" #}
+                                                            Modifier
+                                                        </a>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="item-row">
+                                            <div class="row-info">
+                                                <div class="row-info-title">
+                                                    <span>E-mail :</span>
+                                                </div>
+                                                <div class="row-user-data">
+                                                    <span>{{ app.user.email }}</span>
+                                                </div>
+                                            </div>
+                                            <div class="row-button d-none">
+                                                <div class="a-button a-button-primary">
+                                                    <span class="a-button-inner">
+                                                        <a href="#">
                                                             Modifier
                                                         </a>
                                                     </span>
