@@ -7,7 +7,7 @@
         <div class="container-xxl">
             <div class="narrow-container">
                 <div class="narrow-container">
-                    <ol class="ordered-list a-row">
+                    <ol class="ordered-list">
                         <li>
                             <span class="list-item">
                                 <a href="{{ path('app_account') }}">Votre compte</a>
@@ -26,19 +26,19 @@
                             <div class="vertical-box-inner">
                                 <ul class="security-items">
                                     <li>
-                                        <span class="list-item">
+                                        <div class="list-item">
                                             <div class="item-grid">
-                                                <div class="item-grid-inner a-row">
+                                                <div class="item-grid-inner">
                                                     <div class="item-left-grid">
-                                                        <div class="a-row">
+                                                        <div class="">
                                                             <span class="left-grid-title">Nom :</span>
                                                         </div>
-                                                        <div class="a-row">
+                                                        <div class="user-data">
                                                             {{ app.user.lastName }}
                                                         </div>
                                                     </div>
                                                     <div class="item-right-grid">
-                                                        <div class="a-row a-button a-button-secondary">
+                                                        <div class="a-button a-button-secondary">
                                                             <span class="a-button-inner">
                                                                 <a href="#">Modifier</a>
                                                             </span>
@@ -46,23 +46,23 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </span>
+                                        </div>
                                     </li>
                                     <li>
-                                        <span class="list-item">
+                                        <div class="list-item">
                                             <div class="item-grid">
-                                                <div class="item-grid-inner a-row">
+                                                <div class="item-grid-inner">
                                                     <div class="item-left-grid">
-                                                        <div class="a-row">
+                                                        <div class="">
                                                             <span class="left-grid-title">Numéro de téléphone portable :</span>
                                                         </div>
-                                                        <div class="a-row">
+                                                        <div class="user-data">
                                                             {# TODO: show the number phone saved in database #}
                                                             +33603941673
                                                         </div>
                                                     </div>
                                                     <div class="item-right-grid">
-                                                        <div class="a-row a-button a-button-secondary">
+                                                        <div class="a-button a-button-secondary">
                                                             <span class="a-button-inner">
                                                                 <a href="#">
                                                                     {# TODO: the button show "Ajouter" if there is no number saved, else it shows "Modifier" #}
@@ -73,22 +73,22 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </span>
+                                        </div>
                                     </li>
                                     <li>
-                                        <span class="list-item">
+                                        <div class="list-item">
                                             <div class="item-grid">
-                                                <div class="item-grid-inner a-row">
+                                                <div class="item-grid-inner">
                                                     <div class="item-left-grid">
-                                                        <div class="a-row">
+                                                        <div class="">
                                                             <span class="left-grid-title">Mot de passe :</span>
                                                         </div>
-                                                        <div class="a-row">
+                                                        <div class="user-data">
                                                             ********
                                                         </div>
                                                     </div>
                                                     <div class="item-right-grid">
-                                                        <div class="a-row a-button a-button-secondary">
+                                                        <div class="a-button a-button-secondary">
                                                             <span class="a-button-inner">
                                                                 <a href="#">Modifier</a>
                                                             </span>
@@ -96,7 +96,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </span>
+                                        </div>
                                     </li>
                                 </ul>
                             </div>

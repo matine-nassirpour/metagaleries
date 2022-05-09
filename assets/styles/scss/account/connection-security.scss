@@ -81,37 +81,20 @@
 }
 
 .item-grid-inner {
-  padding-right: 110px;
   position: relative;
+  display: flex;
+  flex-direction: row;
 }
 
 .item-left-grid {
   padding-right: 5%;
-  float: left;
+  display: flex;
+  flex-direction: column;
   width: 100%;
   position: relative;
   overflow: visible;
   zoom: 1;
   min-height: 1px;
-}
-
-.a-row {
-  //width: 100%;
-
-  &:before {
-    display: table;
-    content: "";
-    line-height: 0;
-    font-size: 0;
-  }
-
-  &:after {
-    display: table;
-    content: "";
-    line-height: 0;
-    font-size: 0;
-    clear: both;
-  }
 }
 
 .left-grid-title {
@@ -120,12 +103,12 @@
 
 .item-right-grid {
   width: 110px;
-  margin-right: -110px;
-  float: right;
   position: relative;
   overflow: visible;
   zoom: 1;
   min-height: 1px;
+  display: flex;
+  margin: auto;
 
   div {
     width: 100%;
@@ -164,11 +147,9 @@
 }
 
 .a-button-secondary {
-  //background-color: #FFD814;
   border-color: #FCD200;
 
   &:hover {
-    //background: #F7CA00;
     background-color: #D5D9D9;
     border-color: #F2C200;
     box-shadow: 0 2px 5px 0 rgb(213 217 217 / 50%);
