@@ -20,10 +20,18 @@ class AccountController extends AbstractController
     }
 
     /**
-     * @Route("/change-password", name="change_password")
+     * @Route("/security", name="account_security")
      */
     public function security(): Response
     {
         return $this->render('account/security.html.twig');
+    }
+
+    /**
+     * @Route("/security/change-password", name="change_password")
+     */
+    public function changePassword(): Response
+    {
+        return $this->render('account/change_password.html.twig');
     }
 }

@@ -45,7 +45,7 @@ input[type=search]:focus, input[type=date]:focus {
   box-shadow: 0 0 3px 2px rgb(228 121 17 / 50%);
 }
 
-.primary-button {
+.button-primary {
   font-size: 14px;
   line-height: 14px;
   width: 100%;
@@ -59,6 +59,31 @@ input[type=search]:focus, input[type=date]:focus {
 
   &:hover {
     background: linear-gradient(to bottom,#f5d78e,#eeb933);
+  }
+}
+
+.a-button {
+  border-radius: 8px;
+  box-shadow: 0 2px 5px 0 rgb(213 217 217 / 50%);
+  background: #FFF;
+  border-color: #D5D9D9;
+  border-style: solid;
+  border-width: 1px;
+  cursor: pointer;
+  display: inline-block;
+  padding: 0;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+}
+
+.a-button-primary {
+  border-color: #FCD200;
+
+  &:hover {
+    background-color: #D5D9D9;
+    border-color: #F2C200;
+    box-shadow: 0 2px 5px 0 rgb(213 217 217 / 50%);
   }
 }
 

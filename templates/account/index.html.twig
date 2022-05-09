@@ -29,7 +29,7 @@
                     </a>
                 </div>
                 <div class="account-cell">
-                    <a href="{{ path('app_change_password') }}">
+                    <a href="{{ path('app_account_security') }}">
                         <div class="cell-box">
                             <div class="cell-box-inner">
                                 <div class="cell-box-inner-row">
@@ -70,3 +70,22 @@
         </div>
     </div>
 {% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script defer>
+        const makeFullHeightPage = (stringPageContainerClassName) => {
+            const
+                headerHeight = document.querySelector('.navbar-main').clientHeight,
+                footerHeight = document.querySelector('.footer-main').clientHeight,
+                page = document.querySelector(stringPageContainerClassName)
+            ;
+
+            return page.style.minHeight = `calc(100vh - (${headerHeight}px + ${footerHeight}px))`;
+        }
+
+        makeFullHeightPage('.account-container');
+    </script>
+{% endblock %}
+

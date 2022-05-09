@@ -26,74 +26,62 @@
                             <div class="vertical-box-inner">
                                 <ul class="security-items">
                                     <li>
-                                        <div class="list-item">
-                                            <div class="item-grid">
-                                                <div class="item-grid-inner">
-                                                    <div class="item-left-grid">
-                                                        <div class="">
-                                                            <span class="left-grid-title">Nom :</span>
-                                                        </div>
-                                                        <div class="user-data">
-                                                            {{ app.user.lastName }}
-                                                        </div>
-                                                    </div>
-                                                    <div class="item-right-grid">
-                                                        <div class="a-button a-button-secondary">
-                                                            <span class="a-button-inner">
-                                                                <a href="#">Modifier</a>
-                                                            </span>
-                                                        </div>
-                                                    </div>
+                                        <div class="item-row">
+                                            <div class="row-info">
+                                                <div class="row-info-title">
+                                                    <span>Nom :</span>
+                                                </div>
+                                                <div class="row-user-data">
+                                                    <span>{{ app.user.lastName }}</span>
+                                                </div>
+                                            </div>
+                                            <div class="row-button">
+                                                <div class="a-button a-button-primary">
+                                                    <span class="a-button-inner">
+                                                        <a href="#">Modifier</a>
+                                                    </span>
                                                 </div>
                                             </div>
                                         </div>
                                     </li>
                                     <li>
-                                        <div class="list-item">
-                                            <div class="item-grid">
-                                                <div class="item-grid-inner">
-                                                    <div class="item-left-grid">
-                                                        <div class="">
-                                                            <span class="left-grid-title">Numéro de téléphone portable :</span>
-                                                        </div>
-                                                        <div class="user-data">
-                                                            {# TODO: show the number phone saved in database #}
-                                                            +33603941673
-                                                        </div>
-                                                    </div>
-                                                    <div class="item-right-grid">
-                                                        <div class="a-button a-button-secondary">
-                                                            <span class="a-button-inner">
-                                                                <a href="#">
-                                                                    {# TODO: the button show "Ajouter" if there is no number saved, else it shows "Modifier" #}
-                                                                    Modifier
-                                                                </a>
-                                                            </span>
-                                                        </div>
-                                                    </div>
+                                        <div class="item-row">
+                                            <div class="row-info">
+                                                <div class="row-info-title">
+                                                    <span>Numéro de téléphone portable :</span>
+                                                </div>
+                                                <div class="row-user-data">
+                                                    {# TODO: show the number phone saved in database #}
+                                                    <span>+33603941673</span>
+                                                </div>
+                                            </div>
+                                            <div class="row-button">
+                                                <div class="a-button a-button-primary">
+                                                    <span class="a-button-inner">
+                                                        <a href="#">
+                                                            {# TODO: the button show "Ajouter" if there is no number saved, else it shows "Modifier" #}
+                                                            Modifier
+                                                        </a>
+                                                    </span>
                                                 </div>
                                             </div>
                                         </div>
                                     </li>
                                     <li>
-                                        <div class="list-item">
-                                            <div class="item-grid">
-                                                <div class="item-grid-inner">
-                                                    <div class="item-left-grid">
-                                                        <div class="">
-                                                            <span class="left-grid-title">Mot de passe :</span>
-                                                        </div>
-                                                        <div class="user-data">
-                                                            ********
-                                                        </div>
-                                                    </div>
-                                                    <div class="item-right-grid">
-                                                        <div class="a-button a-button-secondary">
-                                                            <span class="a-button-inner">
-                                                                <a href="#">Modifier</a>
-                                                            </span>
-                                                        </div>
-                                                    </div>
+                                        <div class="item-row">
+                                            <div class="row-info">
+                                                <div class="row-info-title">
+                                                    <span>Mot de passe :</span>
+                                                </div>
+                                                <div class="row-user-data">
+                                                    <span>********</span>
+                                                </div>
+                                            </div>
+                                            <div class="row-button">
+                                                <div class="a-button a-button-primary">
+                                                    <span class="a-button-inner">
+                                                        <a href="{{ path('app_change_password') }}">Modifier</a>
+                                                    </span>
                                                 </div>
                                             </div>
                                         </div>
@@ -106,4 +94,22 @@
             </div>
         </div>
     </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script defer>
+        const makeFullHeightPage = (stringPageContainerClassName) => {
+            const
+                headerHeight = document.querySelector('.navbar-main').clientHeight,
+                footerHeight = document.querySelector('.footer-main').clientHeight,
+                page = document.querySelector(stringPageContainerClassName)
+            ;
+
+            return page.style.minHeight = `calc(100vh - (${headerHeight}px + ${footerHeight}px))`;
+        }
+
+        makeFullHeightPage('.security-container')
+    </script>
 {% endblock %}
