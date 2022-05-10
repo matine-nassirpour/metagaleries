@@ -32,11 +32,11 @@
                                                     <span>Nom et prénom :</span>
                                                 </div>
                                                 <div class="row-user-data">
-                                                    <span>{{ app.user.lastName|upper }}</span>
+                                                    <span>{{ app.user.fullName }}</span>
                                                 </div>
                                             </div>
                                             <div class="row-button">
-                                                <a href="#">
+                                                <a href="{{ path('app_change_name') }}">
                                                     <div class="a-button a-button-primary">
                                                         <span class="a-button-inner">
                                                             Modifier

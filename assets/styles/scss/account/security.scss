@@ -125,6 +125,10 @@
   overflow: hidden;
 }
 
+.box-form-container {
+  padding: 14px 18px;
+}
+
 @media screen and (max-width: 375px) {
   .security-container {
     padding: 18px 5px;
@@ -133,12 +137,4 @@
   .row-button div {
     width: 90%;
   }
-}
-
-/*----------------------------------*\
-  >>> Change password
-\*----------------------------------*/
-
-.change-password-form-container {
-  padding: 14px 18px;
 }

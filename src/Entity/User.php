@@ -28,7 +28,7 @@ class User implements UserInterface
      * @var string[]
      * @ORM\Column(type="json")
      */
-    private array $roles = [];
+    private array $roles;
 
     /**
      * @var string The hashed password
@@ -39,7 +39,7 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private string $firstName;
+    private ?string $firstName;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -135,12 +135,12 @@ class User implements UserInterface
         // $this->plainPassword = null;
     }
 
-    public function getFirstName(): string
+    public function getFirstName(): ?string
     {
         return $this->firstName;
     }
 
-    public function setFirstName(string $firstName): self
+    public function setFirstName(?string $firstName): self
     {
         $this->firstName = $firstName;
 
@@ -161,6 +161,6 @@ class User implements UserInterface
 
     public function getFullName(): string
     {
-        return trim($this->firstName . ' ' . $this->lastName);
+        return trim(strtoupper($this->lastName) . ' ' . $this->firstName);
     }
 }
