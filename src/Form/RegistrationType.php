@@ -21,6 +21,7 @@ class RegistrationType extends AbstractType
                 'label' => 'Votre nom',
                 'required' => true,
                 'constraints' => new Length([
+                    'min' => 6,
                     'max' => 50
                 ])
             ])

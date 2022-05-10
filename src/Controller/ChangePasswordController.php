@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
 use App\Form\ChangePasswordType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -27,21 +28,25 @@ class ChangePasswordController extends AbstractController
         UserPasswordEncoderInterface $passwordEncoder
     ): Response
     {
-        $user = $this->getUser();
+        /** @var User $user */ $user = $this->getUser();
         $form = $this->createForm(ChangePasswordType::class, $user);
 
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $oldPassword = $form->get('oldPassword')->getData();
+            $currentPassword = $form->get('currentPassword')->getData();
 
-            if ($passwordEncoder->isPasswordValid($user, $oldPassword)) {
+            if ($passwordEncoder->isPasswordValid($user, $currentPassword)) {
                 $newPassword = $form->get('newPassword')->getData();
                 $user->setPassword($passwordEncoder->encodePassword($user, $newPassword));
 
                 $this->entityManager->flush();
 
-                return $this->redirectToRoute('app_account_security');
+                $this->addFlash('success', 'Vous avez modifé votre mot de passe avec succès !');
+
+                // header( "refresh:5;url=https://127.0.0.1:8000/account/security");
+            } else {
+                $this->addFlash('danger', 'Votre mot de passe actuel est incorrect');
             }
         }
 

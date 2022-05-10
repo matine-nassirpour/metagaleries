@@ -8,19 +8,36 @@ use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 class ChangePasswordType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('oldPassword', PasswordType::class, [
+            ->add('currentPassword', PasswordType::class, [
                 'label' => 'Mot de passe actuel',
                 'mapped' => false,
-                'required' => false
+                'required' => false,
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Saisissez votre mot de passe actuel',
+                    ]),
+                ],
             ])
             ->add('newPassword', RepeatedType::class, [
                 'type' => PasswordType::class,
+                'constraints' => [
+                    new Constraints\NotBlank([
+                        'message' => 'Saisissez le nouveau mot de passe',
+                    ]),
+                    new Constraints\Length([
+                        'min' => 6,
+                        'minMessage' => '6 caractères minimum requis',
+                        'max' => 50,
+                    ]),
+                ],
                 'mapped' => false,
                 'required' => false,
                 'invalid_message' => 'Les mots de passe ne correspondent pas',

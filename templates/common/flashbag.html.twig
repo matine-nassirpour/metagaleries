@@ -1,0 +1,27 @@
+{% for label, messages in app.flashes %}
+    <div class="{{ label }}-alert-box alert-box alert-success" role="alert">
+        <div class="alert-container">
+            {% if label is same as("success") %}
+                <img class="alert-icon" src="{{ asset('build/images/success.png') }}" alt="Success">
+                <div class="alert-message">
+                    <h5 class="message-heading">Succès</h5>
+                    {% for message in messages %}
+                        <span class="message-body">
+                            {{ message|raw }}
+                        </span>
+                    {% endfor %}
+                </div>
+            {% elseif label is same as("danger") %}
+                <img class="alert-icon" src="{{ asset('build/images/danger.png') }}" alt="Danger">
+                <div class="alert-message">
+                    <h5 class="message-heading">Un problème est survenu</h5>
+                    {% for message in messages %}
+                        <span class="message-body">
+                            {{ message|raw }}
+                        </span>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endfor %}
