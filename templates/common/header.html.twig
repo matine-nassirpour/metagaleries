@@ -23,7 +23,10 @@
                         {% if app.user %}
                             <div class="nav-tool-logged-in-user">
                                 <small>{{ app.user.lastName|upper }}</small>
-                                <span>Compte ›</span>
+                                <div class="d-flex">
+                                    <span>Compte</span>
+                                    <span class="pointing">›</span>
+                                </div>
                             </div>
                         {% endif %}
                         <div class="nav-tool-user">
