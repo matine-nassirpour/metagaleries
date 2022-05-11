@@ -148,7 +148,16 @@
 }
 
 .nav-tool-cart-text {
-  font-size: 14px;
+  font-size: 12px;
+}
+
+.nav-tool-logged-in-user {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  font-size: 12px;
+  margin-right: 14px;
 }
 
 .nav-tool-user {
@@ -216,6 +225,14 @@
 }
 
 @media screen and (max-width: 425px) {
+  #navBelt {
+    padding: 0 14px;
+  }
+
+  .nav-search {
+    margin: 0 !important;
+  }
+
   .nav-logo {
     margin-left: 0;
   }
