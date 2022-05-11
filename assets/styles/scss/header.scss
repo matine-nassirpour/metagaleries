@@ -160,7 +160,9 @@
   margin-right: 14px;
 }
 
-.pointing {
+.logged-in-user-pointer {
+  position: relative;
+  bottom: -.094rem;
   padding-left: 4px;
 }
 
