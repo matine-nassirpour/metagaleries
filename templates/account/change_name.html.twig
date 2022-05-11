@@ -65,17 +65,13 @@
 
         makeFullHeightPage('.security-container');
 
-        // const
-        //     lastNameInput = document.querySelector('.change-name-form-lastname-input')
-        //     changeNameFormBtn = document.querySelector('#changeNameForm button')
-        // ;
-        //
-        // lastNameInput.addEventListener('input', () => {
-        //     if (lastNameInput.value.length >= 1) {
-        //         changeNameFormBtn.disabled = false;
-        //     } else {
-        //         changeNameFormBtn.disabled = true;
-        //     }
-        // })
+        const
+            lastNameInput = document.querySelector('.change-name-form-lastname-input')
+            changeNameFormBtn = document.querySelector('#changeNameForm button')
+        ;
+
+        lastNameInput.addEventListener('input', () => {
+            changeNameFormBtn.disabled = lastNameInput.value.length < 1;
+        })
     </script>
 {% endblock %}
