@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ClassificationRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -21,21 +23,61 @@ class Classification
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private string $product;
+    private string $name;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Product::class, mappedBy="classification")
+     */
+    private ArrayCollection $products;
+
+    public function __construct()
+    {
+        $this->products = new ArrayCollection();
+    }
 
     public function getId(): int
     {
         return $this->id;
     }
 
-    public function getProduct(): string
+    public function getName(): string
     {
-        return $this->product;
+        return $this->name;
     }
 
-    public function setProduct(string $product): self
+    public function setName(string $name): self
     {
-        $this->product = $product;
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Product>
+     */
+    public function getProducts(): Collection
+    {
+        return $this->products;
+    }
+
+    public function addProduct(Product $product): self
+    {
+        if (!$this->products->contains($product)) {
+            $this->products[] = $product;
+            $product->setClassification($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProduct(Product $product): self
+    {
+        if ($this->products->removeElement($product)) {
+
+            if ($product->getClassification() === $this) {
+                $product->setClassification(null);
+            }
+        }
 
         return $this;
     }
