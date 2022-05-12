@@ -2,16 +2,16 @@
 
 namespace App\Entity;
 
-use App\Repository\ClassificationRepository;
+use App\Repository\CategoryRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=ClassificationRepository::class)
- * @ORM\Table(name="`classifications`")
+ * @ORM\Entity(repositoryClass=CategoryRepository::class)
+ * @ORM\Table(name="`categories`")
  */
-class Classification
+class Category
 {
     /**
      * @ORM\Id
@@ -26,7 +26,7 @@ class Classification
     private string $name;
 
     /**
-     * @ORM\OneToMany(targetEntity=Product::class, mappedBy="classification")
+     * @ORM\OneToMany(targetEntity=Product::class, mappedBy="category")
      */
     private Collection $products;
 
@@ -68,7 +68,7 @@ class Classification
     {
         if (!$this->products->contains($product)) {
             $this->products[] = $product;
-            $product->setClassification($this);
+            $product->setCategory($this);
         }
 
         return $this;
@@ -78,8 +78,8 @@ class Classification
     {
         if ($this->products->removeElement($product)) {
 
-            if ($product->getClassification() === $this) {
-                $product->setClassification(null);
+            if ($product->getCategory() === $this) {
+                $product->setCategory(null);
             }
         }
 

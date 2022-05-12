@@ -2,30 +2,30 @@
 
 namespace App\Repository;
 
-use App\Entity\Classification;
+use App\Entity\Category;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @method Classification|null find($id, $lockMode = null, $lockVersion = null)
- * @method Classification|null findOneBy(array $criteria, array $orderBy = null)
- * @method Classification[]    findAll()
- * @method Classification[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Category|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Category|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Category[]    findAll()
+ * @method Category[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class ClassificationRepository extends ServiceEntityRepository
+class CategoryRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Classification::class);
+        parent::__construct($registry, Category::class);
     }
 
     /**
      * @throws ORMException
      * @throws OptimisticLockException
      */
-    public function add(Classification $entity, bool $flush = true): void
+    public function add(Category $entity, bool $flush = true): void
     {
         $this->_em->persist($entity);
         if ($flush) {
@@ -37,7 +37,7 @@ class ClassificationRepository extends ServiceEntityRepository
      * @throws ORMException
      * @throws OptimisticLockException
      */
-    public function remove(Classification $entity, bool $flush = true): void
+    public function remove(Category $entity, bool $flush = true): void
     {
         $this->_em->remove($entity);
         if ($flush) {
@@ -46,7 +46,7 @@ class ClassificationRepository extends ServiceEntityRepository
     }
 
     // /**
-    //  * @return Classification[] Returns an array of Classification objects
+    //  * @return Category[] Returns an array of Category objects
     //  */
     /*
     public function findByExampleField($value)
@@ -63,7 +63,7 @@ class ClassificationRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?Classification
+    public function findOneBySomeField($value): ?Category
     {
         return $this->createQueryBuilder('c')
             ->andWhere('c.exampleField = :val')

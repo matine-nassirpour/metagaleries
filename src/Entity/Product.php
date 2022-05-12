@@ -7,6 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=ProductRepository::class)
+ * @ORM\Table(name="`products`")
  */
 class Product
 {
@@ -48,9 +49,9 @@ class Product
     private float $price;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Classification::class, inversedBy="products")
+     * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="products")
      */
-    private ?Classification $classification;
+    private ?Category $category;
 
     public function getId(): int
     {
@@ -129,14 +130,14 @@ class Product
         return $this;
     }
 
-    public function getClassification(): ?Classification
+    public function getCategory(): ?Category
     {
-        return $this->classification;
+        return $this->category;
     }
 
-    public function setClassification(?Classification $classification): self
+    public function setCategory(?Category $category): self
     {
-        $this->classification = $classification;
+        $this->category = $category;
 
         return $this;
     }

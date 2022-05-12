@@ -2,7 +2,7 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Classification;
+use App\Entity\Category;
 use App\Entity\Product;
 use App\Entity\User;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
@@ -31,7 +31,7 @@ class DashboardController extends AbstractDashboardController
     {
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
         yield MenuItem::linkToCrud('Utilisateurs', 'fa fa-users', User::class);
-        yield MenuItem::linkToCrud('Classifications', 'fa fa-list', Classification::class);
+        yield MenuItem::linkToCrud('Category', 'fa fa-list', Category::class);
         yield MenuItem::linkToCrud('Produits', 'fa fa-tags', Product::class);
     }
 }
