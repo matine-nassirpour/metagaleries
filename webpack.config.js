@@ -69,6 +69,10 @@ Encore
         {
             from: './assets/fonts',
             to: 'fonts/[path][name].[ext]'
+        },
+        {
+            from: './assets/uploads/products',
+            to: 'uploads/products/[path][name].[ext]'
         }
     ])
 

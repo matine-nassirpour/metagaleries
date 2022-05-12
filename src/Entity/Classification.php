@@ -28,7 +28,7 @@ class Classification
     /**
      * @ORM\OneToMany(targetEntity=Product::class, mappedBy="classification")
      */
-    private ArrayCollection $products;
+    private Collection $products;
 
     public function __construct()
     {
@@ -58,6 +58,10 @@ class Classification
     public function getProducts(): Collection
     {
         return $this->products;
+    }
+
+    public function __toString() {
+        return $this->getName();
     }
 
     public function addProduct(Product $product): self
