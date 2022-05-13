@@ -45,6 +45,12 @@ class ProductRepository extends ServiceEntityRepository
         }
     }
 
+//    public function findOneBySlug($slug): Product
+//    {
+//        return $this->createQueryBuilder('p')
+//            ->
+//    }
+
     // /**
     //  * @return Product[] Returns an array of Product objects
     //  */
