@@ -34,6 +34,12 @@ a, a:link, a:visited {
   line-height: 1.46;
 }
 
+.large-container {
+  margin: auto;
+  padding: 0 18px;
+  max-width: 2065px;
+}
+
 input:focus, input[type=text]:focus, input[type=email]:focus,
 input[type=number]:focus, input[type=tel]:focus, input[type=password]:focus,
 input[type=search]:focus, input[type=date]:focus {
@@ -190,4 +196,14 @@ fieldset {
 
 .form-error-icon {
   display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .col-md-3 {
+    width: 15%;
+  }
+
+  .col-md-9 {
+    width: 85%;
+  }
 }
