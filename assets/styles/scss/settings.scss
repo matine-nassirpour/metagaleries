@@ -50,6 +50,23 @@ input[type=search]:focus, input[type=date]:focus {
   box-shadow: 0 0 3px 2px rgb(228 121 17 / 50%);
 }
 
+.form-check-input[type=checkbox] {
+  background-color: #FFF;
+  border-radius: 2px !important;
+}
+
+.form-check-input[type=checkbox]:focus {
+  box-shadow: none;
+}
+
+.form-check-input[type=checkbox]:checked {
+  border-color: var(--color-secondary);
+  background-color: var(--color-primary);
+  background-image: none !important;
+  padding: 2px;
+  background-clip: content-box, padding-box;
+}
+
 .button-primary {
   font-size: 14px;
   line-height: 14px;

@@ -1,0 +1,56 @@
+.large-container .row {
+  --bs-gutter-x: 0;
+}
+
+.search-box {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 14px 18px;
+  background-color: #FFF;
+  margin-top: 25%;
+}
+
+div#categories {
+  max-height: 221px;
+  overflow: hidden;
+  overflow-y: auto;
+  background-color: #FFF;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+    -webkit-appearance: none;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(0,0,0,0.5);
+    -webkit-box-shadow: 0 0 1px rgb(255 255 255 / 50%);
+  }
+
+  .form-check .form-check-input {
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .form-check .form-check-label {
+    width: 100%;
+    height: 100%;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .large-container .row .col-md-3 {
+    width: 100%;
+  }
+  .large-container .row .col-md-9 {
+    width: 100%;
+  }
+  .search-box {
+    margin-top: 20px;
+  }
+}

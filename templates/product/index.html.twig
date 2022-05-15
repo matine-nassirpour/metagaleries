@@ -3,81 +3,11 @@
 {% block title %}Collections Meta Galeries{% endblock %}
 
 {% block body %}
-    <style>
-        .large-container .row {
-            --bs-gutter-x: 0;
-        }
-
-        div#categories {
-            max-height: 221px;
-            overflow: hidden;
-            overflow-y: auto;
-            background-color: #FFF;
-        }
-        div#categories::-webkit-scrollbar {
-            width: 6px;
-            -webkit-appearance: none;
-        }
-
-        div#categories .form-check-label:hover,
-        div#categories .form-check-input:hover {
-            cursor: pointer;
-        }
-
-        div#categories .form-check .form-check-label {
-            width: 100%;
-            height: 100%;
-        }
-
-        div#categories::-webkit-scrollbar-thumb {
-            border-radius: 4px;
-            background-color: rgba(0,0,0,0.5);
-            -webkit-box-shadow: 0 0 1px rgb(255 255 255 / 50%);
-        }
-
-        .search-box {
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            padding: 14px 18px;
-            background-color: #FFF;
-            margin-top: 25%;
-        }
-
-        .form-check-input[type=checkbox] {
-            background-color: #FFF;
-            border-radius: 2px !important;
-        }
-
-        .form-check-input[type=checkbox]:focus {
-            box-shadow: none;
-        }
-
-        .form-check-input[type=checkbox]:checked {
-            border-color: var(--color-secondary);
-            background-color: var(--color-primary);
-            background-image: none !important;
-            padding: 2px;
-            background-clip: content-box, padding-box;
-        }
-
-        @media screen and (max-width: 1024px){
-            .large-container .row .col-md-3 {
-                width: 100%;
-            }
-            .large-container .row .col-md-9 {
-                width: 100%;
-            }
-            .search-box {
-                margin-top: 20px;
-            }
-        }
-    </style>
-
     <div class="large-container full-height-page">
         <div class="row">
             <div class="col-md-3 p-0">
                 <div class="search-box">
-                    <h5 class="text-uppercase mb-3">Catégories</h5>
+                    <h6 class="text-uppercase mb-3">Catégories</h6>
                     {{ form_start(searchForm, {'attr': {'id': 'searchForm'}}) }}
                         {{ form_widget(searchForm.categories) }}
                     {{ form_end(searchForm) }}
