@@ -3,17 +3,87 @@
 {% block title %}Collections Meta Galeries{% endblock %}
 
 {% block body %}
-    <div class="large-container">
-        <div class="row">
-            <div class="col-md-3">
-                {{ form_start(searchForm) }}
-                    {# {{ form_row(searchForm.string) }} #}
-                    {{ form_row(searchForm.categories) }}
+    <style>
+        .large-container .row {
+            --bs-gutter-x: 0;
+        }
 
-                    <button class="btn button-primary mt-1" type="submit">Filtrer</button>
-                {{ form_end(searchForm) }}
+        div#categories {
+            max-height: 221px;
+            overflow: hidden;
+            overflow-y: auto;
+            background-color: #FFF;
+        }
+        div#categories::-webkit-scrollbar {
+            width: 6px;
+            -webkit-appearance: none;
+        }
+
+        div#categories .form-check-label:hover,
+        div#categories .form-check-input:hover {
+            cursor: pointer;
+        }
+
+        div#categories .form-check .form-check-label {
+            width: 100%;
+            height: 100%;
+        }
+
+        div#categories::-webkit-scrollbar-thumb {
+            border-radius: 4px;
+            background-color: rgba(0,0,0,0.5);
+            -webkit-box-shadow: 0 0 1px rgb(255 255 255 / 50%);
+        }
+
+        .search-box {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 14px 18px;
+            background-color: #FFF;
+            margin-top: 25%;
+        }
+
+        .form-check-input[type=checkbox] {
+            background-color: #FFF;
+            border-radius: 2px !important;
+        }
+
+        .form-check-input[type=checkbox]:focus {
+            box-shadow: none;
+        }
+
+        .form-check-input[type=checkbox]:checked {
+            border-color: var(--color-secondary);
+            background-color: var(--color-primary);
+            background-image: none !important;
+            padding: 2px;
+            background-clip: content-box, padding-box;
+        }
+
+        @media screen and (max-width: 1024px){
+            .large-container .row .col-md-3 {
+                width: 100%;
+            }
+            .large-container .row .col-md-9 {
+                width: 100%;
+            }
+            .search-box {
+                margin-top: 20px;
+            }
+        }
+    </style>
+
+    <div class="large-container full-height-page">
+        <div class="row">
+            <div class="col-md-3 p-0">
+                <div class="search-box">
+                    <h5 class="text-uppercase mb-3">Catégories</h5>
+                    {{ form_start(searchForm, {'attr': {'id': 'searchForm'}}) }}
+                        {{ form_widget(searchForm.categories) }}
+                    {{ form_end(searchForm) }}
+                </div>
             </div>
-            <div class="col-md-9">
+            <div class="col-md-9 p-0 pb-5">
                 <div class="row w-100 m-auto">
                     {% for product in products %}
                         {% set price = product.price/100 %}
@@ -30,12 +100,25 @@
                 </div>
             </div>
         </div>
-{#        <div class="d-flex pt-4 gap-2">#}
-{#            <div style="max-width: 230px; width: 100%; height: 100%; padding: 14px 18px; border: 1px solid #DDD; border-radius: 4px">#}
-{#                <h4>Blabal</h4>#}
-{#                <p>Lorem ipsum dolor sit amet.</p>#}
-{#            </div>#}
-{#            #}
-{#        </div>#}
     </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    {{ encore_entry_script_tags('products') }}
+
+    <script>
+        function makeFullHeightPage(stringPageContainerClassName) {
+            const
+                headerHeight = document.querySelector('.navbar-main').clientHeight,
+                footerHeight = document.querySelector('.footer-main').clientHeight,
+                page = document.querySelector(stringPageContainerClassName)
+            ;
+
+            return page.style.minHeight = `calc(100vh - (${headerHeight}px + ${footerHeight}px))`;
+        }
+
+        makeFullHeightPage('.full-height-page');
+    </script>
 {% endblock %}
