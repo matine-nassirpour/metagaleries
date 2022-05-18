@@ -9,14 +9,6 @@
   margin-top: 25%;
 }
 
-details > summary {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  list-style: none;
-  cursor: pointer;
-}
-
 .search-box-title {
   padding: 14px 18px;
   font-size: 13px;
@@ -24,14 +16,8 @@ details > summary {
   font-weight: 600;
 
   .title-arrow {
-    transition: transform .2s ease;
     padding: 1px 2px 0 0;
-    color: #828282;
   }
-}
-
-details[open] > summary .title-arrow {
-  transform: rotate(90deg);
 }
 
 .search-box-form {

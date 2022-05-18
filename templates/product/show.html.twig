@@ -4,12 +4,43 @@
 
 {% block body %}
     <div class="product-container">
-        <div class="container-xxl d-flex">
-            <div class="col-md-8">
+        <div class="large-container d-flex">
+            <div class="" style="max-width: 768px; margin: auto">
                 <img class="img-fluid" src="/build/uploads/products/{{ product.illustration }}" alt="{{ product.name }}">
             </div>
-            <div class="col-md-4">
-                <h1>{{ product.name }}</h1>
+            <div style="width: 350px; margin-top: 5%">
+                <div class="">
+                    <h2 style="text-transform: uppercase; font-weight: 600; font-size: 25px; ">{{ product.name }}</h2>
+                </div>
+                <div class="panel-group">
+                    <details class="panel description-panel">
+                        <summary class="panel-title">
+                            Description
+                            <i class="title-arrow fa-solid fa-angle-right"></i>
+                        </summary>
+                        <div class="panel-body">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus distinctio hic illum officiis possimus quisquam saepe similique sit vel? Ipsa, magnam velit. Ducimus nam, pariatur.</p>
+                        </div>
+                    </details>
+                    <details class="panel detail-panel">
+                        <summary class="panel-title">
+                            Détails
+                            <i class="title-arrow fa-solid fa-angle-right"></i>
+                        </summary>
+                        <div class="panel-body">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem laudantium natus quidem?</p>
+                        </div>
+                    </details>
+                    <details class="panel delivery-panel">
+                        <summary class="panel-title">
+                            Livraison
+                            <i class="title-arrow fa-solid fa-angle-right"></i>
+                        </summary>
+                        <div class="panel-body">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem laudantium natus quidem?</p>
+                        </div>
+                    </details>
+                </div>
             </div>
         </div>
     </div>

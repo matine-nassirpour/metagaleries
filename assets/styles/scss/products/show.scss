@@ -1,0 +1,19 @@
+.panel-group details:not(:nth-child(2)) {
+  border-top: 1px solid #DDD;
+  border-bottom: 1px solid #DDD;
+}
+
+.panel-title {
+  padding: 14px 0;
+  font-size: 13px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.panel-body {
+  padding: 0 0 14px 0;
+
+  p {
+    margin-bottom: 0;
+  }
+}

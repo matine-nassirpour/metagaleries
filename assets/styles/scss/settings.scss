@@ -12,9 +12,13 @@ body {
   color: #0F1111;
 }
 
-h1, h2 {
+h1 {
   font-family: "Source Sans Pro SemiBold", Arial, sans-serif;
   color: var(--color-secondary);
+}
+
+h2 {
+  font-family: Helvetica, Arial, sans-serif;
 }
 
 ul {
@@ -228,4 +232,22 @@ fieldset {
   .col-md-9 {
     width: 85%;
   }
+}
+
+details > summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+  cursor: pointer;
+}
+
+.title-arrow {
+  transition: transform .2s ease;
+  color: #828282;
+  font-size: 14px;
+}
+
+details[open] > summary .title-arrow {
+  transform: rotate(90deg);
 }
