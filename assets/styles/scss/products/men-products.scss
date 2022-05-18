@@ -5,9 +5,37 @@
 .search-box {
   border: 1px solid #ddd;
   border-radius: 4px;
-  padding: 14px 18px;
   background-color: #FFF;
   margin-top: 25%;
+}
+
+details > summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+  cursor: pointer;
+}
+
+.search-box-title {
+  padding: 14px 18px;
+  font-size: 13px;
+  text-transform: uppercase;
+  font-weight: 600;
+
+  .title-arrow {
+    transition: transform .2s ease;
+    padding: 1px 2px 0 0;
+    color: #828282;
+  }
+}
+
+details[open] > summary .title-arrow {
+  transform: rotate(90deg);
+}
+
+.search-box-form {
+  padding: 0 18px 14px;
 }
 
 div#categories {
@@ -23,7 +51,7 @@ div#categories {
 
   &::-webkit-scrollbar-thumb {
     border-radius: 4px;
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgb(221, 221, 221);
     -webkit-box-shadow: 0 0 1px rgb(255 255 255 / 50%);
   }
 

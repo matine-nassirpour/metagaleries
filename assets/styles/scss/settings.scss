@@ -39,6 +39,12 @@ a, a:link, a:visited {
   padding: 0 30px;
 }
 
+@media screen and (max-width: 425px) {
+  .large-container {
+    padding: 0 18px;
+  }
+}
+
 input:focus, input[type=text]:focus, input[type=email]:focus,
 input[type=number]:focus, input[type=tel]:focus, input[type=password]:focus,
 input[type=search]:focus, input[type=date]:focus {

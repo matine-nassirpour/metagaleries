@@ -6,12 +6,17 @@
     <div class="large-container full-height-page">
         <div class="row">
             <div class="col-md-3 p-0">
-                <div class="search-box">
-                    <h6 class="text-uppercase mb-3">Catégories</h6>
-                    {{ form_start(searchForm, {'attr': {'id': 'searchForm'}}) }}
+                <details class="search-box" open>
+                    <summary class="search-box-title">
+                        Catégories
+                        <i class="title-arrow fa-solid fa-angle-right"></i>
+                    </summary>
+                    <div class="search-box-form">
+                        {{ form_start(searchForm, {'attr': {'id': 'searchForm'}}) }}
                         {{ form_widget(searchForm.categories) }}
-                    {{ form_end(searchForm) }}
-                </div>
+                        {{ form_end(searchForm) }}
+                    </div>
+                </details>
             </div>
             <div class="col-md-9 p-0 pb-5">
                 <div class="row w-100 m-auto">
