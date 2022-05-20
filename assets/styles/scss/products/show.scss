@@ -1,3 +1,7 @@
+.product-container {
+  display: flex;
+}
+
 .product-navigation {
   width: 15%;
   padding: 4% 0;
@@ -48,5 +52,27 @@
 
   p {
     margin-bottom: 0;
+    color: #767676;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .product-container {
+    flex-direction: column;
+  }
+
+  .product-navigation {
+    width: 100%;
+    padding: 4% 0 0 0;
+  }
+
+  .product-img-container {
+    width: 100%;
+  }
+
+  .product-details {
+    width: 100%;
+    max-width: 100%;
+    padding: 0 0 4% 0;
   }
 }

@@ -26,8 +26,8 @@
                             <a href="{{ path('app_product', { 'slug': product.slug, 'id': product.id }) }}">
                                 <div class="text-center">
                                     <img class="img-fluid" src="build/uploads/products/{{ product.illustration }}" alt="{{ product.name }}">
-                                    <h5>{{ product.name|upper }}</h5>
-                                    <span>{{ price|format_currency('EUR', {fraction_digit: 0}) }}</span>
+                                    <h2 class="fs-5 fw-bold">{{ product.name|upper }}</h2>
+                                    <span class="fs-5 text-black">{{ price|format_currency('EUR', {fraction_digit: 0}) }}</span>
                                 </div>
                             </a>
                         </div>
