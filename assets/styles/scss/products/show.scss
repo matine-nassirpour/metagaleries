@@ -1,10 +1,43 @@
-.panel-group details:not(:nth-child(2)) {
+.product-navigation {
+  width: 15%;
+  padding: 4% 0;
+  color: #CCCCCC;
+
+  a {
+    text-transform: uppercase;
+    color: var(--color-secondary);
+
+    &:hover {
+      color: inherit;
+    }
+  }
+}
+
+.product-img-container {
+  width: 70%;
+  max-width: 768px;
+  margin: auto;
+}
+
+.product-details {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  max-width: 350px;
+  padding: 4% 0;
+}
+
+.product-panel-group {
+  margin-top: 5rem;
+}
+
+.product-panel-group details:not(:nth-child(2)) {
   border-top: 1px solid #DDD;
   border-bottom: 1px solid #DDD;
 }
 
 .panel-title {
-  padding: 14px 0;
+  padding: 12px 0;
   font-size: 13px;
   text-transform: uppercase;
   font-weight: 600;

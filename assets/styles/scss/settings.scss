@@ -19,6 +19,7 @@ h1 {
 
 h2 {
   font-family: Helvetica, Arial, sans-serif;
+  color: var(--color-secondary);
 }
 
 ul {
@@ -95,7 +96,7 @@ input[type=search]:focus, input[type=date]:focus {
 }
 
 .a-button {
-  border-radius: 8px;
+  border-radius: 4px;
   box-shadow: 0 2px 5px 0 rgb(213 217 217 / 50%);
   background: #FFF;
   border-color: #D5D9D9;
@@ -109,13 +110,42 @@ input[type=search]:focus, input[type=date]:focus {
   vertical-align: middle;
 }
 
-.a-button-primary {
+.a-button-secondary {
   border-color: #FCD200;
 
   &:hover {
     background-color: #D5D9D9;
     border-color: #F2C200;
     box-shadow: 0 2px 5px 0 rgb(213 217 217 / 50%);
+  }
+}
+
+.a-button-container {
+  width: 100%;
+  display: flex;
+
+  a {
+    width: 100%;
+
+    .a-button-primary {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 40px;
+      border-radius: 4px;
+      background: linear-gradient(to bottom, #485769, #232F3E);
+
+      &:hover {
+        background: linear-gradient(to bottom, #232F3E, #232F3E);
+      }
+
+      .a-button-inner {
+        text-transform: uppercase;
+        color: #FFFFFF;
+        font-size: 13px;
+      }
+    }
   }
 }
 

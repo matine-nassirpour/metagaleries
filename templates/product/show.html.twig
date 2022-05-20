@@ -1,25 +1,43 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Meta Galeries {{ product.name }}{% endblock %}
+{% block title %}Meta Galeries {{ product.name|upper }}{% endblock %}
 
 {% block body %}
     <div class="product-container">
         <div class="large-container d-flex">
-            <div class="" style="max-width: 768px; margin: auto">
+            <div class="product-navigation">
+                <a href="{{ path('app_products') }}">Prêt à porter</a> / {{ product.name|upper }}
+            </div>
+            <div class="product-img-container">
                 <img class="img-fluid" src="/build/uploads/products/{{ product.illustration }}" alt="{{ product.name }}">
             </div>
-            <div style="width: 350px; margin-top: 5%">
-                <div class="">
-                    <h2 style="text-transform: uppercase; font-weight: 600; font-size: 25px; ">{{ product.name }}</h2>
+            <div class="product-details">
+                <div class="product-name-container">
+                    <h2 class="fs-3 fw-bold text-uppercase">{{ product.name }}</h2>
                 </div>
-                <div class="panel-group">
-                    <details class="panel description-panel">
+                <div class="product-price-container pt-1">
+                    {% set price = product.price/100 %}
+                    <span class="fs-5 fw-bold">
+                        {{ price|format_currency('EUR', {fraction_digit: 0}) }}
+                    </span>
+                </div>
+                <div class="a-button-container mt-4">
+                    <a href="#">
+                        <div class="a-button a-button-primary">
+                            <span class="a-button-inner">
+                                Ajouter au panier
+                            </span>
+                        </div>
+                    </a>
+                </div>
+                <div class="product-panel-group">
+                    <details class="panel description-panel" open>
                         <summary class="panel-title">
                             Description
                             <i class="title-arrow fa-solid fa-angle-right"></i>
                         </summary>
                         <div class="panel-body">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus distinctio hic illum officiis possimus quisquam saepe similique sit vel? Ipsa, magnam velit. Ducimus nam, pariatur.</p>
+                            <p>{{ product.subtitle }}</p>
                         </div>
                     </details>
                     <details class="panel detail-panel">
@@ -28,7 +46,7 @@
                             <i class="title-arrow fa-solid fa-angle-right"></i>
                         </summary>
                         <div class="panel-body">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem laudantium natus quidem?</p>
+                            <p>{{ product.description }}</p>
                         </div>
                     </details>
                     <details class="panel delivery-panel">
