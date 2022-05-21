@@ -1,0 +1,17 @@
+.quantity-icon-container {
+  font-size: 17px;
+  color: #CCCCCC !important;
+
+  &:hover {
+    color: var(--color-link) !important;
+  }
+}
+
+.a-remove-product {
+  text-transform: uppercase;
+  color: #CCCCCC !important;
+
+  &:hover {
+    color: var(--color-link) !important;
+  }
+}

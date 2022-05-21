@@ -70,4 +70,30 @@ class ProductRepository extends ServiceEntityRepository
 
         return $query->getQuery()->getResult();
     }
+
+//    /**
+//     * @param int $id
+//     * @return Product[]
+//     */
+//    public function findOneById(int $id): array
+//    {
+//        return $this->createQueryBuilder('p')
+//            ->andWhere('p.id = :id')
+//            ->setParameter('id', $id)
+//            ->getQuery()
+//            ->getResult()
+//        ;
+//    }
+
+    /*
+    public function findOneBySomeField($value): ?Category
+    {
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.exampleField = :val')
+            ->setParameter('val', $value)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    }
+    */
 }

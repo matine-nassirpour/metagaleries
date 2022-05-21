@@ -1,0 +1,110 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon panier | Meta Galeries{% endblock %}
+
+{% block body %}
+    <style>
+
+    </style>
+
+    <div class="large-container full-height-page d-flex">
+        {% if cart|length > 0 %}
+            <table class="table mt-5">
+                <thead>
+                    <tr>
+                        <th scope="col">Article</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Prix</th>
+                        <th scope="col">Qté</th>
+                        <th scope="col">Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% set total = null %}
+                    {% for product in cart %}
+                        {% set price = product.product.price/100 %}
+                        {% set subtotal = (product.product.price * product.quantity)/100 %}
+                        <tr>
+                            <td>
+                                <img style="width: 150px; height: auto" src="/build/uploads/products/{{ product.product.illustration }}" alt="{{ product.product.name }}">
+                            </td>
+                            <td>
+                                <div class="d-flex flex-column">
+                                    <h1 class="text-uppercase fs-6 fw-bold">{{ product.product.name }}</h1>
+                                    <span>{{ product.product.description }}</span>
+                                    <span>{{ product.product.subtitle }}</span>
+                                    <a class="a-remove-product mt-3" href="{{ path('app_remove_from_cart', { 'id': product.product.id }) }}">
+                                        Supprimer
+                                    </a>
+                                </div>
+                            </td>
+                            <td>
+                                <span>{{ price|format_currency('EUR', {fraction_digit: 2}) }}</span>
+                            </td>
+                            <td>
+                                <div class="d-flex">
+                                    <a class="quantity-icon-container" href="#">
+                                        <i class="fa-solid fa-circle-minus"></i>
+                                    </a>
+                                    <span class="px-2">{{ product.quantity }}</span>
+                                    <a class="quantity-icon-container" href="#">
+                                        <i class="fa-solid fa-circle-plus"></i>
+                                    </a>
+                                </div>
+                            </td>
+                            <td>
+                                <span class="fw-bold">
+                                    {{ subtotal|format_currency('EUR', {fraction_digit: 2}) }}
+                                </span>
+                            </td>
+                        </tr>
+                        {% set total = total + subtotal %}
+                    {% endfor %}
+                </tbody>
+            </table>
+            <div style="width: 350px;">
+                test
+            </div>
+        {% else%}
+            <div class="empty-cart-img-container m-auto">
+                <div class="row pt-4 pb-4">
+                    <div class="col-md-6">
+                        <img class="img-fluid" src="{{ asset('build/images/empty-cart.png') }}" alt="Panier vide">
+                    </div>
+                    <div class="col-md-6 my-auto">
+                        <h2 class="fw-bold">Votre panier Meta Galeries est vide</h2>
+                        <h5>Trouvez votre nouveau style !</h5>
+                        <div class="a-button-container btn-small mt-4">
+                            <a href="{{ path('app_products') }}">
+                                <div class="a-button a-button-secondary">
+                                    <span class="a-button-inner">C'est parti</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+{#        <div>#}
+{#            {{ total|format_currency('EUR', {fraction_digit: 0}) }}#}
+{#        </div>#}
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script>
+        function makeFullHeightPage(stringPageContainerClassName) {
+            const
+                headerHeight = document.querySelector('.navbar-main').clientHeight,
+                footerHeight = document.querySelector('.footer-main').clientHeight,
+                page = document.querySelector(stringPageContainerClassName)
+            ;
+
+            return page.style.minHeight = `calc(100vh - (${headerHeight}px + ${footerHeight}px))`;
+        }
+
+        makeFullHeightPage('.full-height-page');
+    </script>
+{% endblock %}
