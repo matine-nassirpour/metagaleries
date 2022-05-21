@@ -114,7 +114,7 @@ input[type=search]:focus, input[type=date]:focus {
   border-color: #FCD200;
 
   &:hover {
-    background-color: #D5D9D9;
+    background: linear-gradient(to bottom, #f9f9f9, #e2e2e2);
     border-color: #F2C200;
     box-shadow: 0 2px 5px 0 rgb(213 217 217 / 50%);
   }
@@ -134,16 +134,17 @@ input[type=search]:focus, input[type=date]:focus {
       width: 100%;
       height: 40px;
       border-radius: 4px;
-      background: linear-gradient(to bottom, #485769, #232F3E);
+      background: linear-gradient(to bottom, #ffdd79, #e0b615);
 
       &:hover {
-        background: linear-gradient(to bottom, #232F3E, #232F3E);
+        background: linear-gradient(to bottom, #efc443, #e0b615);;
       }
 
       .a-button-inner {
         text-transform: uppercase;
         color: #FFFFFF;
         font-size: 13px;
+        font-weight: 600;
       }
     }
   }

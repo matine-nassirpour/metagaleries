@@ -3,12 +3,17 @@
 {% block title %}Meta Galeries {{ product.name|upper }}{% endblock %}
 
 {% block body %}
-    <div class="large-container">
+    <div class="large-container full-height-page">
+        <div class="product-navigation">
+            <a href="{{ path('app_products') }}">Prêt à porter</a> / {{ product.name|upper }}
+        </div>
         <div class="product-container">
-            <div class="product-navigation">
-                <a href="{{ path('app_products') }}">Prêt à porter</a> / {{ product.name|upper }}
+            <div class="product-thumbnails">
+                <div class="thumb-img-container">
+                    <img src="/build/uploads/products/{{ product.illustration }}" alt="{{ product.name }}">
+                </div>
             </div>
-            <div class="product-img-container">
+            <div class="product-img-container" id="img-container">
                 <img class="img-fluid" src="/build/uploads/products/{{ product.illustration }}" alt="{{ product.name }}">
             </div>
             <div class="product-details">
@@ -17,7 +22,7 @@
                 </div>
                 <div class="product-price-container pt-1">
                     {% set price = product.price/100 %}
-                    <span class="fs-5 fw-bold">
+                    <span class="fs-5">
                         {{ price|format_currency('EUR', {fraction_digit: 0}) }}
                     </span>
                 </div>
@@ -62,5 +67,25 @@
             </div>
         </div>
     </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    {{ encore_entry_script_tags('product') }}
+
+    <script>
+        function makeFullHeightPage(stringPageContainerClassName) {
+            const
+                headerHeight = document.querySelector('.navbar-main').clientHeight,
+                footerHeight = document.querySelector('.footer-main').clientHeight,
+                page = document.querySelector(stringPageContainerClassName)
+            ;
+
+            return page.style.minHeight = `calc(100vh - (${headerHeight}px + ${footerHeight}px))`;
+        }
+
+        makeFullHeightPage('.full-height-page');
+    </script>
 {% endblock %}
 
