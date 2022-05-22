@@ -33,7 +33,7 @@
                                     <h1 class="text-uppercase fs-6 fw-bold">{{ product.product.name }}</h1>
                                     <span>{{ product.product.description }}</span>
                                     <span>{{ product.product.subtitle }}</span>
-                                    <a class="a-remove-product mt-3" href="{{ path('app_remove_from_cart', { 'id': product.product.id }) }}">
+                                    <a class="a-remove-product mt-3" href="{{ path('app_remove_product', { 'id': product.product.id }) }}">
                                         Supprimer
                                     </a>
                                 </div>
@@ -43,11 +43,11 @@
                             </td>
                             <td>
                                 <div class="d-flex">
-                                    <a class="quantity-icon-container" href="#">
+                                    <a class="quantity-icon-container" href="{{ path('app_decrease_product', { 'id': product.product.id }) }}">
                                         <i class="fa-solid fa-circle-minus"></i>
                                     </a>
                                     <span class="px-2">{{ product.quantity }}</span>
-                                    <a class="quantity-icon-container" href="#">
+                                    <a class="quantity-icon-container" href="{{ path('app_increase_product', { 'id': product.product.id }) }}">
                                         <i class="fa-solid fa-circle-plus"></i>
                                     </a>
                                 </div>

@@ -3,9 +3,6 @@
 namespace App\Controller;
 
 use App\Cart\Cart;
-use App\Entity\Product;
-use App\Repository\ProductRepository;
-use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
@@ -19,30 +16,21 @@ class CartController extends AbstractController
     /**
      * @Route("", name="cart")
      */
-    public function index(Cart $cart, ProductRepository $productRepository): Response
+    public function index(Cart $cart): Response
     {
-        $cartTable = [];
-
-        foreach ($cart->get() as $id => $quantity) {
-            $cartTable[] = [
-                'product' => $productRepository->findOneBy(['id' => $id]),
-                'quantity' => $quantity
-            ];
-        }
-
         return $this->render('cart/index.html.twig', [
-            'cart' => $cartTable
+            'cart' => $cart->getCart()
         ]);
     }
 
     /**
-     * @Route("/add/{id}", name="add_to_cart")
+     * @Route("/increase/product/{id}", name="increase_product")
      */
-    public function add(Cart $cart, int $id): RedirectResponse
+    public function increase(Cart $cart, int $id): RedirectResponse
     {
-        $cart->add($id);
+        $cart->increase($id);
 
-        return $this->redirectToRoute('app_products');
+        return $this->redirectToRoute('app_cart');
     }
 
     /**
@@ -56,11 +44,21 @@ class CartController extends AbstractController
     }
 
     /**
-     * @Route("/delete/product/{id}", name="remove_from_cart")
+     * @Route("/remove/product/{id}", name="remove_product")
      */
     public function removeFromCart(Cart $cart, int $id): RedirectResponse
     {
         $cart->removeProduct($id);
+
+        return $this->redirectToRoute('app_cart');
+    }
+
+    /**
+     * @Route("/decrease/product/{id}", name="decrease_product")
+     */
+    public function decrease(Cart $cart, int $id): RedirectResponse
+    {
+        $cart->decrease($id);
 
         return $this->redirectToRoute('app_cart');
     }
