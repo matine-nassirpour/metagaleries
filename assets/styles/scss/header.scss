@@ -74,6 +74,10 @@
   margin-left: 14px;
 }
 
+.nav-logo-link img {
+  height: 35px;
+}
+
 .nav-fill {
   width: 100%;
 }
@@ -253,6 +257,12 @@
 
   .nav-tool-cart-text {
     display: none;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .nav-logo-link img {
+    height: 30px;
   }
 }
 
