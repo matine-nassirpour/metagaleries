@@ -1,9 +1,9 @@
 .auth-nav {
   display: flex;
-  height: 48px;
+  height: 60px;
   width: 100%;
   border-bottom: 1px solid #232f3e;
-  background-color: #232f3e;
+  background-color: var(--color-primary);
 }
 
 .auth-nav-logo {
