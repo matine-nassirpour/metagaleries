@@ -34,9 +34,11 @@ class ChangePasswordController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            /** @var string $currentPassword */
             $currentPassword = $form->get('currentPassword')->getData();
 
             if ($passwordEncoder->isPasswordValid($user, $currentPassword)) {
+                /** @var string $newPassword */
                 $newPassword = $form->get('newPassword')->getData();
                 $user->setPassword($passwordEncoder->encodePassword($user, $newPassword));
 

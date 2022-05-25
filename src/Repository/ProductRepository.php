@@ -48,9 +48,9 @@ class ProductRepository extends ServiceEntityRepository
 
     /**
      * @param Search $search
-     * @return Product[]
+     * @return int|mixed|string
      */
-    public function findWithSearch(Search $search): array
+    public function findWithSearch(Search $search)
     {
         $query = $this->createQueryBuilder('p')
             ->select('c', 'p')

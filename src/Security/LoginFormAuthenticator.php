@@ -68,7 +68,9 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
 
     public function getUser($credentials, UserProviderInterface $userProvider)
     {
-        $token = new CsrfToken('authenticate', $credentials['csrf_token']);
+        /** @var ?string $value */ $value =  $credentials['csrf_token'];
+        $token = new CsrfToken('authenticate', $value);
+
         if (!$this->csrfTokenManager->isTokenValid($token)) {
             throw new InvalidCsrfTokenException();
         }
@@ -82,9 +84,11 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
         return $user;
     }
 
-    public function checkCredentials($credentials, UserInterface $user)
+    public function checkCredentials($credentials, UserInterface $user): bool
     {
-        return $this->passwordEncoder->isPasswordValid($user, $credentials['password']);
+        /** @var string $raw */ $raw = $credentials['password'];
+
+        return $this->passwordEncoder->isPasswordValid($user, $raw);
     }
 
     /**
@@ -92,7 +96,9 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
      */
     public function getPassword($credentials): ?string
     {
-        return $credentials['password'];
+        /** @var ?string $password */ $password = $credentials['password'];
+
+        return $password;
     }
 
     public function onAuthenticationSuccess(
