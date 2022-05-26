@@ -2,15 +2,16 @@
 
 namespace App\Controller;
 
+use App\Entity\Address;
 use App\Entity\User;
-use App\Form\ChangeNameType;
+use App\Form\AddressType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class ChangeNameController extends AbstractController
+class AccountAddressController extends AbstractController
 {
     private EntityManagerInterface $entityManager;
 
@@ -20,24 +21,27 @@ class ChangeNameController extends AbstractController
     }
 
     /**
-     * @Route("/account/security/change-name", name="app_change_name")
+     * @Route("/account/addresses/add", name="app_account_addresses_add")
      */
-    public function changeName(Request $request): Response
+    public function add(Request $request): Response
     {
-        /** @var User $user */ $user = $this->getUser();
-        $form = $this->createForm(ChangeNameType::class, $user);
+        $address = new Address();
+        $form = $this->createForm(AddressType::class, $address);
 
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            /** @var User $user */ $user = $this->getUser();
+            $address->setUser($user);
 
+            $this->entityManager->persist($address);
             $this->entityManager->flush();
 
-            $this->addFlash('success', 'Vous avez modifié votre compte avec succès !');
+            return $this->redirectToRoute('app_account_addresses');
         }
 
-        return $this->render('account/change_name.html.twig', [
-            'changeNameForm' => $form->createView()
+        return $this->render('account/add_address.html.twig', [
+            'addressForm' => $form->createView()
         ]);
     }
 }

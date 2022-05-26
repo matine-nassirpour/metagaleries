@@ -1,0 +1,17 @@
+details > summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+  cursor: pointer;
+
+  .title-arrow {
+    transition: transform .2s ease;
+    color: #828282;
+    font-size: 14px;
+  }
+}
+
+details[open] > summary .title-arrow {
+  transform: rotate(90deg);
+}

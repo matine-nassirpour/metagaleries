@@ -1,0 +1,81 @@
+.addresses-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+  justify-content: center;
+  gap: .5rem;
+}
+
+.a-add-new-address-button {
+  margin-top: .5rem;
+
+  .address-box:hover {
+    background-color: #EEE;
+
+    .add-address-icon {
+      color: #FFFFFF;
+    }
+  }
+}
+
+.address-box {
+  height: 266px;
+  width: 320px;
+  border-width: 1px;
+  border-color: #C7C7C7;
+  box-sizing: border-box;
+  border-style: solid;
+  box-shadow: 0 2px 4px 0 rgb(189 189 189 / 50%);
+  background-color: #FFFFFF;
+  border-radius: 8px;
+  margin-top: .5rem;
+}
+
+.dashed-box {
+  border-style: dashed;
+  border-width: 2px;
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
+  box-shadow:none;
+}
+
+.add-address-icon {
+  font-size: 50px;
+  color: #EEE;
+}
+
+@media screen and (max-width: 1023px) {
+  .medium-container {
+    .ordered-list, .address-title {
+      max-width: 665px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  .addresses-container {
+    grid-template-columns: repeat(2, 0fr);
+    gap: 1rem;
+  }
+
+  .address-title {
+    margin-bottom: 18px;
+  }
+
+  .a-add-new-address-button, .address-box {
+    margin-top: 0;
+  }
+}
+
+@media screen and (max-width: 710px) {
+  .addresses-container {
+    grid-template-columns: repeat(1, 0fr);
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .address-box {
+    width: 270px;
+  }
+}

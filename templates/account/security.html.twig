@@ -3,114 +3,108 @@
 {% block title %}Meta Galeries Modifier le nom, l'email, le mot de passe{% endblock %}
 
 {% block body %}
-    <div class="security-container">
-        <div class="container-xxl">
-            <div class="narrow-container">
-                <div class="narrow-container">
-                    <ol class="ordered-list">
+    <div class="full-height-page p-4">
+        <div class="narrow-container">
+            <ol class="ordered-list">
+                <li>
+                    <span class="list-item">
+                        <a href="{{ path('app_account') }}">Votre compte</a>
+                    </span>
+                </li>
+                <li>
+                    <span class="list-item"> › </span>
+                </li>
+                <li>
+                    <span class="list-item">Connexion et sécurité</span>
+                </li>
+            </ol>
+            <h3 class="">Connexion et sécurité</h3>
+            <div class="vertical-box">
+                <div class="vertical-box-inner">
+                    <ul class="security-items">
                         <li>
-                            <span class="list-item">
-                                <a href="{{ path('app_account') }}">Votre compte</a>
-                            </span>
-                        </li>
-                        <li>
-                            <span class="list-item"> › </span>
-                        </li>
-                        <li>
-                            <span class="list-item">Connexion et sécurité</span>
-                        </li>
-                    </ol>
-                    <h3>Connexion et sécurité</h3>
-                    <div class="security-box">
-                        <div class="vertical-box">
-                            <div class="vertical-box-inner">
-                                <ul class="security-items">
-                                    <li>
-                                        <div class="item-row">
-                                            <div class="row-info">
-                                                <div class="row-info-title">
-                                                    <span>Nom et prénom :</span>
-                                                </div>
-                                                <div class="row-user-data">
-                                                    <span>{{ app.user.fullName }}</span>
-                                                </div>
-                                            </div>
-                                            <div class="a-button-container btn-small">
-                                                <a href="{{ path('app_change_name') }}">
-                                                    <div class="a-button a-button-secondary">
-                                                        <span class="a-button-inner">
-                                                            Modifier
-                                                        </span>
-                                                    </div>
-                                                </a>
-                                            </div>
+                            <div class="item-row">
+                                <div class="row-info">
+                                    <div class="row-info-title">
+                                        <span>Nom et prénom :</span>
+                                    </div>
+                                    <div class="row-user-data">
+                                        <span>{{ app.user.fullName }}</span>
+                                    </div>
+                                </div>
+                                <div class="a-button-container btn-small">
+                                    <a href="{{ path('app_change_name') }}">
+                                        <div class="a-button a-button-secondary">
+                                            <span class="a-button-inner">
+                                                Modifier
+                                            </span>
                                         </div>
-                                    </li>
-                                    <li>
-                                        <div class="item-row">
-                                            <div class="row-info">
-                                                <div class="row-info-title">
-                                                    <span>Numéro de téléphone portable :</span>
-                                                </div>
-                                                <div class="row-user-data">
-                                                    {# TODO: show the number phone saved in database #}
-                                                    <span>+33603941673</span>
-                                                </div>
-                                            </div>
-                                            <div class="a-button-container btn-small">
-                                                <a href="#">
-                                                    <div class="a-button a-button-secondary">
-                                                        <span class="a-button-inner">
-                                                                {# TODO: the button show "Ajouter" if there is no number saved, else it shows "Modifier" #}
-                                                                Modifier
-                                                        </span>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="item-row">
-                                            <div class="row-info">
-                                                <div class="row-info-title">
-                                                    <span>E-mail :</span>
-                                                </div>
-                                                <div class="row-user-data">
-                                                    <span>{{ app.user.email }}</span>
-                                                </div>
-                                            </div>
-                                            <div class="a-button-container btn-small d-none">
-                                                <a href="#">
-                                                    <div class="a-button a-button-secondary">
-                                                        <span class="a-button-inner">Modifier</span>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="item-row">
-                                            <div class="row-info">
-                                                <div class="row-info-title">
-                                                    <span>Mot de passe :</span>
-                                                </div>
-                                                <div class="row-user-data">
-                                                    <span>********</span>
-                                                </div>
-                                            </div>
-                                            <div class="a-button-container btn-small">
-                                                <a href="{{ path('app_change_password') }}">
-                                                    <div class="a-button a-button-secondary">
-                                                        <span class="a-button-inner">Modifier</span>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
+                                    </a>
+                                </div>
                             </div>
-                        </div>
-                    </div>
+                        </li>
+                        <li>
+                            <div class="item-row">
+                                <div class="row-info">
+                                    <div class="row-info-title">
+                                        <span>Numéro de téléphone portable :</span>
+                                    </div>
+                                    <div class="row-user-data">
+                                        {# TODO: show the number phone saved in database #}
+                                        <span>+33603941673</span>
+                                    </div>
+                                </div>
+                                <div class="a-button-container btn-small">
+                                    <a href="#">
+                                        <div class="a-button a-button-secondary">
+                                            <span class="a-button-inner">
+                                                {# TODO: the button show "Ajouter" if there is no number saved, else it shows "Modifier" #}
+                                                Modifier
+                                            </span>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-row">
+                                <div class="row-info">
+                                    <div class="row-info-title">
+                                        <span>E-mail :</span>
+                                    </div>
+                                    <div class="row-user-data">
+                                        <span>{{ app.user.email }}</span>
+                                    </div>
+                                </div>
+                                <div class="a-button-container btn-small d-none">
+                                    <a href="#">
+                                        <div class="a-button a-button-secondary">
+                                            <span class="a-button-inner">Modifier</span>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-row">
+                                <div class="row-info">
+                                    <div class="row-info-title">
+                                        <span>Mot de passe :</span>
+                                    </div>
+                                    <div class="row-user-data">
+                                        <span>********</span>
+                                    </div>
+                                </div>
+                                <div class="a-button-container btn-small">
+                                    <a href="{{ path('app_change_password') }}">
+                                        <div class="a-button a-button-secondary">
+                                            <span class="a-button-inner">Modifier</span>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -131,6 +125,6 @@
             return page.style.minHeight = `calc(100vh - (${headerHeight}px + ${footerHeight}px))`;
         }
 
-        makeFullHeightPage('.security-container')
+        makeFullHeightPage('.full-height-page')
     </script>
 {% endblock %}

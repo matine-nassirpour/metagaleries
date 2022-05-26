@@ -1,0 +1,17 @@
+table {
+  border-collapse: unset;
+}
+
+.table {
+  height: 100%;
+}
+
+.table th:last-child,
+.table td:last-child {
+  text-align: right;
+}
+
+.table th {
+  text-transform: uppercase;
+  font-weight: 300;
+}

@@ -26,4 +26,12 @@ class AccountController extends AbstractController
     {
         return $this->render('account/security.html.twig');
     }
+
+    /**
+     * @Route("/addresses", name="account_addresses")
+     */
+    public function address(): Response
+    {
+        return $this->render('account/address.html.twig');
+    }
 }

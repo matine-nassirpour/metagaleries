@@ -1,0 +1,78 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Vos adresses | Meta Galeries{% endblock %}
+
+{% block body %}
+    <div class="full-height-page p-4">
+        <div class="medium-container">
+            <ol class="ordered-list">
+                <li>
+                <span class="list-item">
+                    <a href="{{ path('app_account') }}">Votre compte</a>
+                </span>
+                </li>
+                <li>
+                    <span class="list-item"> › </span>
+                </li>
+                <li>
+                    <span class="list-item">Vos adresses</span>
+                </li>
+            </ol>
+            <h3 class="address-title">Vos adresses</h3>
+            <div class="addresses-container">
+                <a class="a-add-new-address-button" href="{{ path('app_account_addresses_add') }}">
+                    <div class="address-box dashed-box">
+                        <div class="p-4">
+                            <i class="add-address-icon fa-solid fa-plus"></i>
+                            <h4>Ajouter une adresse</h4>
+                        </div>
+                    </div>
+                </a>
+                {% for address in app.user.addresses %}
+                    <div class="address-box">
+                        <div class="h-100 d-flex flex-column justify-content-between p-4">
+                            <ul>
+                                <li class="fw-bold mb-2">
+                                    {{ address.firstName ~ ' ' ~ address.lastName|upper }}
+                                </li>
+                                <li>
+                                    {{ address.phone|split('', 2)|join(' ') }}
+                                </li>
+                                <li>
+                                    {{ address.address }}
+                                </li>
+                                <li>
+                                    {{ address.zipCode ~ ', ' ~ address.city }}
+                                </li>
+                                <li>
+                                    {{ address.country|country_name }}
+                                </li>
+                            </ul>
+                            <div class="address-box-buttons-container">
+                                <a class="a-hover" href="#">Modifier</a> &nbsp; | &nbsp; <a class="a-hover" href="#">Effacer</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script defer>
+        const makeFullHeightPage = (stringPageContainerClassName) => {
+            const
+                headerHeight = document.querySelector('.navbar-main').clientHeight,
+                footerHeight = document.querySelector('.footer-main').clientHeight,
+                page = document.querySelector(stringPageContainerClassName)
+            ;
+
+            return page.style.minHeight = `calc(100vh - (${headerHeight}px + ${footerHeight}px))`;
+        }
+
+        makeFullHeightPage('.full-height-page');
+    </script>
+{% endblock %}

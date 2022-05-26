@@ -27,22 +27,12 @@ class Address
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private string $name;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
     private string $firstName;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
     private string $lastName;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private ?string $company;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -86,18 +76,6 @@ class Address
         return $this;
     }
 
-    public function getName(): string
-    {
-        return $this->name;
-    }
-
-    public function setName(string $name): self
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
     public function getFirstName(): string
     {
         return $this->firstName;
@@ -118,18 +96,6 @@ class Address
     public function setLastName(string $lastName): self
     {
         $this->lastName = $lastName;
-
-        return $this;
-    }
-
-    public function getCompany(): ?string
-    {
-        return $this->company;
-    }
-
-    public function setCompany(?string $company): self
-    {
-        $this->company = $company;
 
         return $this;
     }

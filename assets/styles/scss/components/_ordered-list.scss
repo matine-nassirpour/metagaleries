@@ -1,0 +1,23 @@
+.ordered-list {
+  display: block;
+  color: #B8B8B8;
+  padding-left: 0;
+  margin: 0 0 5px;
+
+  li {
+    display: inline-block;
+    margin: 0 10px 10px 0;
+    word-wrap: break-word;
+    list-style: decimal;
+
+    .list-item {
+      font-size: 13px;
+      line-height: 19px;
+
+      a:hover {
+        text-decoration: underline;
+        color: #C45500;
+      }
+    }
+  }
+}

@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
-class ChangePasswordController extends AbstractController
+class AccountPasswordController extends AbstractController
 {
     private EntityManagerInterface $entityManager;
 
@@ -34,12 +34,10 @@ class ChangePasswordController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            /** @var string $currentPassword */
-            $currentPassword = $form->get('currentPassword')->getData();
+            /** @var string $currentPassword */ $currentPassword = $form->get('currentPassword')->getData();
 
             if ($passwordEncoder->isPasswordValid($user, $currentPassword)) {
-                /** @var string $newPassword */
-                $newPassword = $form->get('newPassword')->getData();
+                /** @var string $newPassword */ $newPassword = $form->get('newPassword')->getData();
                 $user->setPassword($passwordEncoder->encodePassword($user, $newPassword));
 
                 $this->entityManager->flush();
