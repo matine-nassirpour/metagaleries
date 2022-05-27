@@ -3,6 +3,7 @@
 {% block title %}Vos adresses | Meta Galeries{% endblock %}
 
 {% block body %}
+    {% set address = addressForm.address.vars.value %}
     <div class="full-height-page p-4">
         <div class="narrow-container">
             <ol class="ordered-list">
@@ -23,10 +24,22 @@
                     <span class="list-item"> › </span>
                 </li>
                 <li>
-                    <span class="list-item">Nouvelle adresse</span>
+                    <span class="list-item">
+                        {% if address is not same as "" %}
+                            Modifier votre adresse
+                        {% else %}
+                            Nouvelle adresse
+                        {% endif %}
+                    </span>
                 </li>
             </ol>
-            <h3 class="">Ajouter une nouvelle adresse</h3>
+            <h3 class="mb-3">
+                {% if address is not same as "" %}
+                    Modifier votre adresse
+                {% else %}
+                    Ajouter une nouvelle adresse
+                {% endif %}
+            </h3>
             <div class="vertical-box">
                 <div class="vertical-box-inner">
                     <div class="box-form-container">
@@ -55,7 +68,13 @@
                                 </div>
                             </div>
 
-                            <button class="btn button-primary mt-1" type="submit">Enregistrer les modifications</button>
+                            <button class="btn button-primary mt-1" type="submit">
+                                {% if address is not same as "" %}
+                                    Enregistrer les modifications
+                                {% else %}
+                                    Ajouter mon adresse
+                                {% endif %}
+                            </button>
                         {{ form_end(addressForm) }}
                     </div>
                 </div>

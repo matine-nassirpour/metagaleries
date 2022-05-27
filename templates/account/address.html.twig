@@ -18,6 +18,7 @@
                     <span class="list-item">Vos adresses</span>
                 </li>
             </ol>
+            {{ include('common/flashbag.html.twig') }}
             <h3 class="address-title">Vos adresses</h3>
             <div class="addresses-container">
                 <a class="a-add-new-address-button" href="{{ path('app_account_addresses_add') }}">
@@ -48,8 +49,10 @@
                                     {{ address.country|country_name }}
                                 </li>
                             </ul>
-                            <div class="address-box-buttons-container">
-                                <a class="a-hover" href="#">Modifier</a> &nbsp; | &nbsp; <a class="a-hover" href="#">Effacer</a>
+                            <div class="d-flex flex-row gap-2">
+                                <a class="a-hover" href="{{ path('app_account_addresses_edit', { 'id': address.id }) }}">Modifier</a>
+                                <span>|</span>
+                                <a class="a-hover" href="{{ path('app_account_addresses_remove', { 'id': address.id }) }}">Effacer</a>
                             </div>
                         </div>
                     </div>
