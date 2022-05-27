@@ -34,6 +34,8 @@ class AccountIdentityController extends AbstractController
             $this->entityManager->flush();
 
             $this->addFlash('success', 'Vous avez modifié votre compte avec succès !');
+
+            return $this->redirectToRoute('app_account_security');
         }
 
         return $this->render('account/change_name.html.twig', [

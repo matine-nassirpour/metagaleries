@@ -44,7 +44,7 @@ class AccountPasswordController extends AbstractController
 
                 $this->addFlash('success', 'Vous avez modifé votre mot de passe avec succès !');
 
-                // header( "refresh:5;url=https://127.0.0.1:8000/account/security");
+                return $this->redirectToRoute('app_account_security');
             } else {
                 $this->addFlash('danger', 'Votre mot de passe actuel est incorrect');
             }
