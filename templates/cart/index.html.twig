@@ -3,14 +3,11 @@
 {% block title %}Mon panier | Meta Galeries{% endblock %}
 
 {% block body %}
-    <style>
-
-    </style>
-
-    <div class="large-container full-height-page d-flex">
-        {% if cart|length > 0 %}
-            <table class="table mt-5">
-                <thead>
+    <div class="large-container full-height-page">
+        <div class="cart-container my-5">
+            {% if cart|length > 0 %}
+                <table class="table">
+                    <thead>
                     <tr>
                         <th scope="col">Article</th>
                         <th scope="col">Description</th>
@@ -18,15 +15,15 @@
                         <th scope="col">Qté</th>
                         <th scope="col">Total</th>
                     </tr>
-                </thead>
-                <tbody>
+                    </thead>
+                    <tbody>
                     {% set total = null %}
                     {% for product in cart %}
                         {% set price = product.product.price/100 %}
                         {% set subtotal = (product.product.price * product.quantity)/100 %}
                         <tr>
                             <td>
-                                <img style="width: 150px; height: auto" src="/build/uploads/products/{{ product.product.illustration }}" alt="{{ product.product.name }}">
+                                <img class="img-fluid" src="/build/uploads/products/{{ product.product.illustration }}" alt="{{ product.product.name }}" width="250">
                             </td>
                             <td>
                                 <div class="d-flex flex-column">
@@ -60,34 +57,51 @@
                         </tr>
                         {% set total = total + subtotal %}
                     {% endfor %}
-                </tbody>
-            </table>
-            <div style="width: 350px;">
-                test
-            </div>
-        {% else%}
-            <div class="empty-cart-img-container m-auto">
-                <div class="row pt-4 pb-4">
-                    <div class="col-md-6">
-                        <img class="img-fluid" src="{{ asset('build/images/empty-cart.png') }}" alt="Panier vide">
+                    </tbody>
+                </table>
+                <div class="order-summary-box">
+                    <h4 class="text-uppercase fw-bold fs-6 pt-4 px-4">Sommaire de commande</h4>
+                    <div class="d-flex justify-content-between mt-3 px-4 text-uppercase fs-7">
+                        <span>Nombre de produit</span>
+                        <span>{{ cart|length }}</span>
                     </div>
-                    <div class="col-md-6 my-auto">
-                        <h2 class="fw-bold">Votre panier Meta Galeries est vide</h2>
-                        <h5>Trouvez votre nouveau style !</h5>
-                        <div class="a-button-container btn-small mt-4">
-                            <a href="{{ path('app_products') }}">
-                                <div class="a-button a-button-secondary">
-                                    <span class="a-button-inner">C'est parti</span>
-                                </div>
-                            </a>
+                    <div class="d-flex justify-content-between mt-3 px-4 text-uppercase fs-7">
+                        <span>Total</span>
+                        <span>{{ total|format_currency('EUR', {fraction_digit: 0}) }}</span>
+                    </div>
+                    <div class="divider-inner after-whitesmoke mt-4"></div>
+                    <div class="a-button-container px-4">
+                        <a href="#">
+                            <div class="a-button a-button-tertiary">
+                                <img class="mr-2" src="{{ asset('build/images/lock.png') }}" alt="Paiement sécurisé" width="15">
+                                <span class="a-button-inner">
+                                Paiement sécurisé
+                            </span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            {% else%}
+                <div class="empty-cart-img-container m-auto">
+                    <div class="row pt-4 pb-4">
+                        <div class="col-md-6">
+                            <img class="img-fluid" src="{{ asset('build/images/empty-cart.png') }}" alt="Panier vide">
+                        </div>
+                        <div class="col-md-6 my-auto">
+                            <h2 class="fw-bold">Votre panier Meta Galeries est vide</h2>
+                            <h5>Trouvez votre nouveau style !</h5>
+                            <div class="a-button-container btn-small mt-4">
+                                <a href="{{ path('app_products') }}">
+                                    <div class="a-button a-button-secondary">
+                                        <span class="a-button-inner">C'est parti</span>
+                                    </div>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        {% endif %}
-{#        <div>#}
-{#            {{ total|format_currency('EUR', {fraction_digit: 0}) }}#}
-{#        </div>#}
+            {% endif %}
+        </div>
     </div>
 {% endblock %}
 

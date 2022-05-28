@@ -37,12 +37,14 @@
 .a-button-container {
   width: 100%;
   display: flex;
+  z-index: 1;
 
   a {
     width: 100%;
 
     .a-button-primary,
-    .a-button-secondary {
+    .a-button-secondary,
+    .a-button-tertiary {
       display: flex;
       justify-content: center;
       align-items: center;
@@ -77,6 +79,21 @@
 
       .a-button-inner {
         color: var(--color-primary-text);
+      }
+    }
+
+    .a-button-tertiary {
+      background-color: var(--color-tertiary);
+      border-color: transparent;
+      box-shadow: none;
+
+      &:hover {
+        background-color: var(--color-secondary);
+        border-color: var(--color-tertiary);
+      }
+
+      .a-button-inner {
+        color: #FFFFFF;
       }
     }
   }

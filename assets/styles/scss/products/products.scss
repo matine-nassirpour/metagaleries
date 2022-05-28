@@ -59,12 +59,22 @@ div#categories {
 
 @media screen and (max-width: 1024px) {
   .large-container .row .col-md-3 {
-    width: 100%;
+    width: 100% !important;
   }
   .large-container .row .col-md-9 {
-    width: 100%;
+    width: 100% !important;
   }
   .search-box {
     margin-top: 20px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .large-container .row .col-md-3 {
+    width: 15%;
+  }
+
+  .large-container .row .col-md-9 {
+    width: 85%;
   }
 }
