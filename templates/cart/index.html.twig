@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Mon panier | Meta Galeries{% endblock %}
+{% block title %}Votre panier | Meta Galeries{% endblock %}
 
 {% block body %}
     <div class="large-container full-height-page">
@@ -20,7 +20,7 @@
                     {% set total = null %}
                     {% for product in cart %}
                         {% set price = product.product.price/100 %}
-                        {% set subtotal = (product.product.price * product.quantity)/100 %}
+                        {% set subtotal = (price * product.quantity) %}
                         <tr>
                             <td>
                                 <img class="img-fluid" src="/build/uploads/products/{{ product.product.illustration }}" alt="{{ product.product.name }}" width="250">
@@ -59,7 +59,7 @@
                     {% endfor %}
                     </tbody>
                 </table>
-                <div class="order-summary-box">
+                <div class="cart-summary-box">
                     <h4 class="text-uppercase fw-bold fs-6 pt-4 px-4">Sommaire de commande</h4>
                     <div class="d-flex justify-content-between mt-3 px-4 text-uppercase fs-7">
                         <span>Nombre de produit</span>
@@ -71,12 +71,11 @@
                     </div>
                     <div class="divider-inner after-whitesmoke mt-4"></div>
                     <div class="a-button-container px-4">
-                        <a href="#">
+                        <a href="{{ path('app_order') }}">
                             <div class="a-button a-button-tertiary">
-                                <img class="mr-2" src="{{ asset('build/images/lock.png') }}" alt="Paiement sécurisé" width="15">
                                 <span class="a-button-inner">
-                                Paiement sécurisé
-                            </span>
+                                    Valider mon panier
+                                </span>
                             </div>
                         </a>
                     </div>
@@ -107,18 +106,5 @@
 
 {% block javascripts %}
     {{ parent() }}
-
-    <script>
-        function makeFullHeightPage(stringPageContainerClassName) {
-            const
-                headerHeight = document.querySelector('.navbar-main').clientHeight,
-                footerHeight = document.querySelector('.footer-main').clientHeight,
-                page = document.querySelector(stringPageContainerClassName)
-            ;
-
-            return page.style.minHeight = `calc(100vh - (${headerHeight}px + ${footerHeight}px))`;
-        }
-
-        makeFullHeightPage('.full-height-page');
-    </script>
+    {{ encore_entry_script_tags('full-height-page') }}
 {% endblock %}

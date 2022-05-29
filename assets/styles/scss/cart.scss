@@ -24,7 +24,7 @@
   }
 }
 
-.order-summary-box {
+.cart-summary-box {
   display: flex;
   flex-direction: column;
   width: 400px;
@@ -45,7 +45,7 @@
       margin-bottom: 3rem;
     }
 
-    .order-summary-box {
+    .cart-summary-box {
       width: 100%;
       margin-bottom: 48px;
     }
@@ -89,7 +89,7 @@
       }
     }
 
-    .order-summary-box {
+    .cart-summary-box {
       margin-bottom: 0;
     }
   }

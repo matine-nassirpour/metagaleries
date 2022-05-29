@@ -1,0 +1,22 @@
+#order_carriers,
+#order_addresses {
+  display: flex;
+  flex-direction: column;
+
+  .form-check {
+    padding: 10px 40px;
+  }
+}
+
+.order-summary-container {
+  border: 1px solid #EEE;
+  border-radius: 4px;
+  background-color: #f7f7f7;
+  padding: 1.5rem 1.25rem;
+}
+
+.product-summary-box {
+  display: flex;
+  gap: 1rem;
+  padding-bottom: 1rem;
+}

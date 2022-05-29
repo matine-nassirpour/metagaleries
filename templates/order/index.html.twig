@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Passez votre commande - Processus de paiement | Meta Galeries{% endblock %}
+
+{% set form %}
+    {{ form_start(orderForm) }}
+        <div class="d-flex flex-column mb-3">
+            <h6 class="fw-bold fs-7 m-0">{{ orderForm.addresses.vars.label }}</h6>
+            {{ form_widget(orderForm.addresses) }}
+        </div>
+        <div class="d-flex flex-column">
+            <h6 class="fw-bold fs-7 m-0">{{ orderForm.carriers.vars.label }}</h6>
+            {{ form_widget(orderForm.carriers) }}
+        </div>
+        <button id="orderFormButton" type="submit" class="">Paiement</button>
+    {{ form_end(orderForm) }}
+{% endset %}
+
+{% block body %}
+    <div class="full-height-page p-4">
+        <div class="medium-container">
+            {{ include('common/flashbag.html.twig') }}
+            <h3 class="mb-3">Vérification et validation de votre commande</h3>
+            <div class="row">
+                <div class="col-md-7">
+                    {{ form|replace({'[br]': '<br />'})|raw }}
+                </div>
+                <div class="order-summary-container col-md-5">
+                    <h6 class="pb-4 mb-0 fs-7 text-uppercase color-secondary-text">
+                        {% if cart|length == 1 %}
+                            {{ cart|length }} Produit
+                        {% else %}
+                            {{ cart|length }} Produits
+                        {% endif %}
+                    </h6>
+                    {% set total = null %}
+                    {% for product in cart %}
+                        {% set price = product.product.price/100 %}
+                        {% set subtotal = (price * product.quantity) %}
+                        {% set total = total + subtotal %}
+                        <div class="product-summary-box">
+                            <div class="">
+                                <img class="img-fluid" src="/build/uploads/products/{{ product.product.illustration }}" alt="{{ product.product.name }}" width="100">
+                            </div>
+                            <div class="d-flex flex-column">
+                                <h4 class="text-uppercase fw-bold fs-7">{{ product.product.name }}</h4>
+                                <div class="d-flex">
+                                    <small class="color-secondary-text text-uppercase">Qté : &nbsp;</small>
+                                    <span>{{ product.quantity }}</span>
+                                </div>
+                                <div class="d-flex">
+                                    <small class="color-secondary-text text-uppercase">Prix : &nbsp;</small>
+                                    <span> {{ price|format_currency('EUR', {fraction_digit: 2}) }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                    <div class="d-flex justify-content-between mt-3 text-uppercase fs-7 fw-bold">
+                        <span>Total</span>
+                        <span>{{ total|format_currency('EUR', {fraction_digit: 2}) }}</span>
+                    </div>
+                    <div class="divider-inner after-whitesmoke mt-4"></div>
+                    <div class="a-button-container">
+                        <a>
+                            <div class="a-button a-button-tertiary">
+                                <img class="mr-2" src="{{ asset('build/images/lock.png') }}" alt="Paiement sécurisé" width="15">
+                                <span class="a-button-inner">
+                                    Paiement sécurisé
+                                </span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('full-height-page') }}
+{% endblock %}
