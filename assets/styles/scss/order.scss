@@ -1,7 +1,20 @@
+.order-address-container,
+.order-carrier-container {
+  border-radius: 4px;
+  border: 1px solid #EEE;
+
+  h6 {
+    padding: 14px 18px;
+    background-color: #F7F7F7;
+    border-bottom: 1px solid #EEE;
+  }
+}
+
 #order_carriers,
 #order_addresses {
   display: flex;
   flex-direction: column;
+  padding: 14px 18px;
 
   .form-check {
     padding: 10px 40px;
@@ -13,10 +26,38 @@
   border-radius: 4px;
   background-color: #f7f7f7;
   padding: 1.5rem 1.25rem;
+  height: 100%;
 }
 
 .product-summary-box {
   display: flex;
   gap: 1rem;
   padding-bottom: 1rem;
+}
+
+@media screen and (max-width: 767px) {
+  .order-container .row {
+    flex-direction: column-reverse;
+    --bs-gutter-x: 0;
+    --bs-gutter-y: 1.5rem;
+  }
+}
+
+/*----------------------------------*\
+  >>> Order passed
+\*----------------------------------*/
+
+
+.selected-address-container,
+.selected-carrier-container {
+  padding: 14px 18px;
+  border-radius: 4px;
+  border: 1px solid #EEE;
+}
+
+@media screen and (max-width: 767px) {
+  .passed-order-container .row {
+    --bs-gutter-x: 0;
+    --bs-gutter-y: 1.5rem;
+  }
 }
