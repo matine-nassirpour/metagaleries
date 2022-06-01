@@ -114,6 +114,17 @@ class Order
         return $this;
     }
 
+    public function getTotal(): ?float
+    {
+        $total = null;
+
+        foreach ($this->getOrderDetails()->getValues() as $product) {
+            $total = $total + ($product->getPrice() * $product->getQuantity());
+        }
+
+        return $total;
+    }
+
     public function getDelivery(): string
     {
         return $this->delivery;
