@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Meta Galeries {{ product.name|upper }}{% endblock %}
+{% block title %}Meta Galeries | {{ product.name|upper }}{% endblock %}
 
 {% block body %}
     <div class="large-container full-height-page">
@@ -71,21 +71,6 @@
 
 {% block javascripts %}
     {{ parent() }}
-
     {{ encore_entry_script_tags('product') }}
-
-    <script>
-        function makeFullHeightPage(stringPageContainerClassName) {
-            const
-                headerHeight = document.querySelector('.navbar-main').clientHeight,
-                footerHeight = document.querySelector('.footer-main').clientHeight,
-                page = document.querySelector(stringPageContainerClassName)
-            ;
-
-            return page.style.minHeight = `calc(100vh - (${headerHeight}px + ${footerHeight}px))`;
-        }
-
-        makeFullHeightPage('.full-height-page');
-    </script>
 {% endblock %}
 

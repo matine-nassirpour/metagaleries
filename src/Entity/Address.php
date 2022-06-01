@@ -59,6 +59,11 @@ class Address
      */
     private string $phone;
 
+    public function __toString()
+    {
+        return $this->getFullName() . '[br]' . $this->getAddress() . '[br]' . $this->getZipCode() . ' ' . $this->getCountry();
+    }
+
     public function getId(): int
     {
         return $this->id;
@@ -98,6 +103,11 @@ class Address
         $this->lastName = $lastName;
 
         return $this;
+    }
+
+    public function getFullName(): string
+    {
+        return $this->getFirstName() . ' ' . $this->getLastName();
     }
 
     public function getAddress(): string

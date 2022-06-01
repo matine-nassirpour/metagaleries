@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Votre compte Meta Galeries{% endblock %}
+{% block title %}Votre compte | Meta Galeries{% endblock %}
 
 {% block body %}
     <div class="account-container full-height-page">
@@ -73,19 +73,6 @@
 
 {% block javascripts %}
     {{ parent() }}
-
-    <script defer>
-        const makeFullHeightPage = (stringPageContainerClassName) => {
-            const
-                headerHeight = document.querySelector('.navbar-main').clientHeight,
-                footerHeight = document.querySelector('.footer-main').clientHeight,
-                page = document.querySelector(stringPageContainerClassName)
-            ;
-
-            return page.style.minHeight = `calc(100vh - (${headerHeight}px + ${footerHeight}px))`;
-        }
-
-        makeFullHeightPage('.full-height-page');
-    </script>
+    {{ encore_entry_script_tags('full-height-page') }}
 {% endblock %}
 

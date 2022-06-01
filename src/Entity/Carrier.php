@@ -33,6 +33,16 @@ class Carrier
      */
     private float $price;
 
+    public function __toString()
+    {
+        $price = $this->getPrice() / 100;
+
+        return
+            $this->getName() . '[br]' .
+            $this->getDescription() . '[br]' .
+            number_format($price, 2, ',') . ' €';
+    }
+
     public function getId(): int
     {
         return $this->id;
