@@ -72,7 +72,7 @@
                     </div>
                     <div class="divider-inner after-whitesmoke mt-4"></div>
                     <div class="a-button-container">
-                        <a class="order-payment-button">
+                        <a class="order-payment-button" id="checkout-button">
                             <div class="a-button a-button-tertiary">
                                 <img class="mr-2" src="{{ asset('build/images/lock.png') }}" alt="Paiement sécurisé" width="15">
                                 <span class="a-button-inner">
@@ -90,4 +90,30 @@
 {% block javascripts %}
     {{ parent() }}
     {{ encore_entry_script_tags('full-height-page') }}
+    <script src="https://js.stripe.com/v3/"></script>
+    <script defer>
+        var stripe = Stripe('pk_test_51L5uvnDbDyAwt1rEDkMEFzoLLjDDHz2xzPnmJA5ECPW02im4h4TqXbdjOxDwTMTw1TvJAAfIH0hanrLbRk7jL3WF00MT5QvhNh');
+        var checkoutButton = document.getElementById('checkout-button');
+
+        checkoutButton.addEventListener('click', function () {
+            fetch('/commande/create-session/{{ reference }}', {
+                method: 'POST',
+            })
+                .then(function(response) {
+                    return response.json();
+                })
+                .then(function(session) {
+                    if (session.error === 'order') {
+                        window.location.replace('{{ path('app_order') }}');
+                    } else {
+                        return stripe.redirectToCheckout({ sessionId: session.id });
+                    }
+                })
+                .then(function(result) {
+                    if (result.error) {
+                        alert(result.error.message);
+                    }
+                });
+        });
+    </script>
 {% endblock %}
