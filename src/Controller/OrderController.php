@@ -60,8 +60,6 @@ class OrderController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $order = new Order();
-
             /** @var User $user */ $user = $this->getUser();
             $date = new \DateTimeImmutable();
             /** @var Carrier $carrier */ $carrier = $form->get('carriers')->getData();
@@ -73,6 +71,9 @@ class OrderController extends AbstractController
             $addressContent .= '<br />' . $address->getZipCode() . ' ' . $address->getCity();
             $addressContent .= '<br />' . $address->getCountry();
 
+            $order = new Order();
+            $reference = $date->format('Ymd') . '-' . uniqid();
+            $order->setReference($reference);
             $order->setUser($user);
             $order->setCreatedAt($date);
             $order->setCarrierName($carrier->getName());
@@ -94,12 +95,13 @@ class OrderController extends AbstractController
                 $this->entityManager->persist($orderDetails);
             }
 
-             $this->entityManager->flush();
+            $this->entityManager->flush();
 
             return $this->render('order/passed.html.twig', [
                 'cart' => $cart->getCart(),
                 'carrier' => $carrier,
-                'address' => $address
+                'address' => $address,
+                'reference' => $order->getReference()
             ]);
         }
 
