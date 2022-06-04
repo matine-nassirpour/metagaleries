@@ -44,6 +44,11 @@ class OrderDetails
      */
     private float $totalPrice;
 
+    public function __toString()
+    {
+        return $this->getProduct() . ' x' . $this->getQuantity();
+    }
+
     public function getId(): int
     {
         return $this->id;

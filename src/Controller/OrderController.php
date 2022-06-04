@@ -30,7 +30,7 @@ class OrderController extends AbstractController
     /**
      * @Route("", name="order")
      */
-    public function index(Cart $cart, Request $request): Response
+    public function index(Cart $cart): Response
     {
         /** @var User $user */ $user = $this->getUser();
 
