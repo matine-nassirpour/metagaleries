@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Erreur de paiement | Meta Galeries{% endblock %}
+
+{% block body %}
+    <div class="full-height-page p-4">
+        <div class="container-xxl">
+            <div class="row">
+                <div class="col-md-6">
+                    <img class="img-fluid" src="{{ asset('build/images/payment-failed.png') }}" alt="Paiement accepté">
+                </div>
+                <div class="col-md-6 fs-6 my-auto">
+                    <h2 class="text-uppercase mb-5 text-decoration-underline">Payment refusé</h2>
+                    <h6 class="mb-3">Bonjour <strong>{{ order.user.fullName }},</strong></h6>
+                    <p>
+                        Votre paiement a été échoué
+                        <strong>n°{{ order.reference }}</strong>.
+                    </p>
+                    <p>Un email avec tous les détails vient de vous être envoyé à l'adresse <strong>{{ order.user.email }}</strong>.</p>
+                    <hr>
+                    <a href="{{ path('app_order') }}">Réessayer</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('full-height-page') }}
+{% endblock %}

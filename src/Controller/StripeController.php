@@ -2,9 +2,9 @@
 
 namespace App\Controller;
 
-use App\Cart\Cart;
 use App\Entity\Order;
 use App\Entity\Product;
+use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use Stripe\Checkout\Session;
 use Stripe\Stripe;
@@ -15,7 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class StripeController extends AbstractController
 {
     /**
-     * @Route("/commande/create-session/{reference}", name="app_stripe_create_session")
+     * @Route("/order/create-session/{reference}", name="app_stripe_create_session")
      */
     public function index(
         EntityManagerInterface $entityManager,
@@ -27,13 +27,11 @@ class StripeController extends AbstractController
         $YOUR_DOMAIN = 'https://127.0.0.1:8000';
         $product_for_stripe = [];
 
+        /** @var Order $order */
         $order = $entityManager->getRepository(Order::class)->findOneBy(['reference' => $reference]);
 
-        if (!$order) {
-            new JsonResponse(['error' => 'order']);
-        }
-
         foreach ($order->getOrderDetails()->getValues() as $product) {
+            // @phpstan-ignore-next-line
             $productObject = $entityManager->getRepository(Product::class)->findOneByName($product->getProduct());
 
             $product_for_stripe[] = [
@@ -49,15 +47,34 @@ class StripeController extends AbstractController
             ];
         }
 
+        $product_for_stripe[] = [
+            'price_data' => [
+                'currency' => 'eur',
+                'unit_amount' => $order->getCarrierPrice(),
+                'product_data' => [
+                    'name' => $order->getCarrierName(),
+                    'images' => [$YOUR_DOMAIN],
+                ],
+            ],
+            'quantity' => 1,
+        ];
+
+        /** @var User $user */ $user = $this->getUser();
+
         $checkout_session = Session::create([
+            'customer_email' => $user->getEmail(),
             'payment_method_types' => ['card'],
             'line_items' => [
                 $product_for_stripe
             ],
             'mode' => 'payment',
-            'success_url' => $YOUR_DOMAIN . '/success.html',
-            'cancel_url' => $YOUR_DOMAIN . '/cancel.html',
+            'success_url' => $YOUR_DOMAIN . '/order/success/{CHECKOUT_SESSION_ID}',
+            'cancel_url' => $YOUR_DOMAIN . '/order/cancel/{CHECKOUT_SESSION_ID}',
         ]);
+
+        $order->setStripeSessionId($checkout_session->id);
+
+        $entityManager->flush();
 
         return new JsonResponse(['id' => $checkout_session->id]);
     }

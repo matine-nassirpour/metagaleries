@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Confirmation de commande | Meta Galeries{% endblock %}
+
+{% block body %}
+    <div class="full-height-page p-4">
+        <div class="container-xxl">
+            <div class="row">
+                <div class="col-md-6">
+                    <img class="img-fluid" src="{{ asset('build/images/payment-success.png') }}" alt="Paiement accepté">
+                </div>
+                <div class="col-md-6 fs-6 my-auto">
+                    <h2 class="text-uppercase mb-5 text-decoration-underline">Payment accepté</h2>
+                    <h6 class="mb-3">Bonjour <strong>{{ order.user.fullName }},</strong></h6>
+                    <p>
+                        Nous vous remercions pour votre commande
+                        <strong>n°{{ order.reference }}</strong>.
+                    </p>
+                    <p>Une confirmation vient de vous être envoyée par email à l'adresse <strong>{{ order.user.email }}</strong>.</p>
+                    <hr>
+                    <a href="{{ path('app_account') }}">Suivre ma commande</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('full-height-page') }}
+{% endblock %}
