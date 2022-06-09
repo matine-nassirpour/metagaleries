@@ -20,7 +20,7 @@ class AccountIdentityController extends AbstractController
     }
 
     /**
-     * @Route("/account/security/change-name", name="app_change_name")
+     * @Route("/account/security/change-name", name="app_account_change_name")
      */
     public function changeName(Request $request): Response
     {
