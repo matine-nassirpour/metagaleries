@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Order;
+use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
@@ -43,6 +44,22 @@ class OrderRepository extends ServiceEntityRepository
         if ($flush) {
             $this->_em->flush();
         }
+    }
+
+    /**
+     * @param User $user
+     * @return Order[]
+     */
+    public function findPaidOrders(User $user): array
+    {
+        return $this->createQueryBuilder('o')
+            ->andWhere('o.isPaid = 1')
+            ->andWhere('o.user = :user')
+            ->setParameter('user', $user)
+            ->orderBy('o.id', 'DESC')
+            ->getQuery()
+            ->getResult()
+        ;
     }
 
     // /**

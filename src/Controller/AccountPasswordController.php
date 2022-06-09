@@ -21,7 +21,7 @@ class AccountPasswordController extends AbstractController
     }
 
     /**
-     * @Route("/account/security/change-password", name="app_change_password")
+     * @Route("/account/security/change-password", name="app_account_change_password")
      */
     public function changePassword(
         Request $request,
