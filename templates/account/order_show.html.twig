@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Commande {{ order.reference }} | Meta Galeries{% endblock %}
+
+{% block body %}
+    <div class="full-height-page p-4">
+        <div class="medium-container">
+            <ol class="ordered-list mw-100">
+                <li>
+                <span class="list-item">
+                    <a href="{{ path('app_account') }}">Votre compte</a>
+                </span>
+                </li>
+                <li>
+                    <span class="list-item"> › </span>
+                </li>
+                <li>
+                    <span class="list-item">
+                        <a href="{{ path('app_account_orders') }}">Vos commandes</a>
+                    </span>
+                </li>
+                <li>
+                    <span class="list-item"> › </span>
+                </li>
+                <li>
+                    <span class="list-item">{{ order.reference }}</span>
+                </li>
+            </ol>
+            <h3 class="order-title">Commande {{ order.reference }}</h3>
+            <div class="order-details-container">
+                <div class="py-1">
+                    <span class="fw-bold">Commande passée le :</span>
+                    <span class="fs-6">{{ order.createdAt|format_datetime(locale='fr') }}</span>
+                </div>
+                <div class="py-1">
+                    <span class="fw-bold">Transporteur choisi : </span>
+                    <span class="fs-6">{{ order.carrierName }}</span>
+                </div>
+                <div class="py-1">
+                    <span class="fw-bold">Prix de livraison : </span>
+                    <span class="fs-6">{{ (order.carrierPrice/100)|format_currency('EUR', {fraction_digit: 2}) }}</span>
+                </div>
+                <div class="d-flex flex-column py-1">
+                    <span class="fw-bold mb-2">Adresse de livraison : </span>
+                    <span class="fs-6">{{ order.delivery|raw }}</span>
+                </div>
+                <div class="divider-inner after-white mt-4"></div>
+                {% for product in order.orderDetails %}
+                    <div class="py-1">
+                        <span class="fw-bold">Produit :</span>
+                        <span class="fs-6">{{ product.product }}</span>
+                    </div>
+                    <div class="py-1">
+                        <span class="fw-bold">Quantité :</span>
+                        <span class="fs-6">{{ product.quantity }}</span>
+                    </div>
+                    <div class="py-1">
+                        <span class="fw-bold">Sous-total :</span>
+                        <span class="fs-6">{{ (product.totalPrice/100)|format_currency('EUR', {fraction_digit: 2}) }}</span>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('full-height-page') }}
+{% endblock %}
