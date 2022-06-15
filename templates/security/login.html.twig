@@ -12,6 +12,7 @@
     <div class="login-register-portal">
         <div class="portal-container">
             <h4>Bienvenue</h4>
+            {{ include('common/flashbag.html.twig') }}
             <div class="forms-box">
                 {{ render(controller('App\\Controller\\RegistrationController::register')) }}
 

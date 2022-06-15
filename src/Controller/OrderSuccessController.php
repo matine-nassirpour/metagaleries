@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Cart\Cart;
 use App\Entity\Order;
+use App\Mailjet\Mailer;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -35,6 +36,16 @@ class OrderSuccessController extends AbstractController
             $order->setIsPaid(true);
 
             $this->entityManager->flush();
+
+            $mailer = new Mailer();
+
+            $mailer->send(
+                $order->getUser()->getEmail(),
+                $order->getUser()->getLastName(),
+                'Meta Galeries - Nouvelle commande',
+                'Commande N° ' . $order->getReference(),
+                'Bonjour, votre commande a bien été enregistrée.<br />Merci pour votre commande.'
+            );
         }
 
         return $this->render('order/success.html.twig', [

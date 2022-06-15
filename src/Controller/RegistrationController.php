@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\RegistrationType;
+use App\Mailjet\Mailer;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -38,14 +39,31 @@ class RegistrationController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            /** @var string $password */
-            $password = $form->get('password')->getData();
-            $user->setPassword($passwordEncoder->encodePassword($user, $password));
+            $emailAddress = $this->entityManager->getRepository(User::class)->findOneBy(['email' => $user->getEmail()]);
 
-            $this->entityManager->persist($user);
-            $this->entityManager->flush();
+            if (!$emailAddress) {
+                /** @var string $password */ $password = $form->get('password')->getData();
+                $user->setPassword($passwordEncoder->encodePassword($user, $password));
 
-            return $this->redirectToRoute('app_home');
+                $this->entityManager->persist($user);
+                $this->entityManager->flush();
+
+                $mailer = new Mailer();
+
+                $mailer->send(
+                    $user->getEmail(),
+                    $user->getLastName(),
+                    'Meta Galeries - Bienvenue à bord !',
+                    'Bienvenue à bord !',
+                    'Bonjour, votre compte Meta Galeries a bien été créé.<br /> Veuillez simplement vous connecter en cliquant sur le lien ci-dessous.'
+                );
+
+                $this->addFlash('success', 'Votre compte a bien été créé. Vous pouvez dès à présent vous connecter à votre compte.');
+            } else {
+                $this->addFlash('danger', 'Il existe déjà un compte avec cette adresse e-mail !');
+            }
+
+            return $this->redirectToRoute('app_login');
         }
 
         return $this->render('registration/index.html.twig', [
