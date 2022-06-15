@@ -5,7 +5,7 @@
 {% block body %}
     <div class="full-height-page p-4">
         <div class="medium-container">
-            <ol class="ordered-list">
+            <ol class="ordered-list mw-100">
                 <li>
                 <span class="list-item">
                     <a href="{{ path('app_account') }}">Votre compte</a>
@@ -21,13 +21,32 @@
             {% if orders|length == 0 %}
                 <p>Vous n'avez pas passé de commande</p>
             {% else %}
-                <h3 class="address-title">Vos commandes</h3>
+                <h3 class="order-title">Vos commandes</h3>
                 <div class="orders-container">
-                    {% for order in orders %}
-                        <div class="order-box">
-{#                            {{ dump(order) }}#}
-                        </div>
-                    {% endfor %}
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Référence</th>
+                                <th scope="col">Commande effectuée le</th>
+                                <th scope="col">Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for order in orders %}
+                                <tr>
+                                    <td>
+                                        <a href="{{ path('app_account_order_show', { 'reference': order.reference }) }}" class="order-reference">{{ order.reference }}</a>
+                                    </td>
+                                    <td>
+                                        {{ order.createdAt|format_datetime(locale='fr', pattern='dd MMMM YYYY') }}
+                                    </td>
+                                    <td>
+                                        {{ ((order.carrierPrice + order.total)/100)|format_currency('EUR', {fraction_digit: 2}) }}
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
                 </div>
             {% endif %}
         </div>

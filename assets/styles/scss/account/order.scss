@@ -1,0 +1,39 @@
+.order-reference {
+  padding: 0.3rem 0.6rem;
+  background-color: #eee;
+  border-radius: 4px;
+}
+
+@media screen and (max-width: 768px) {
+  .orders-container {
+
+    .table {
+      thead tr {
+        display: none;
+      }
+
+      tbody tr {
+
+        td {
+          display: inline-flex;
+          width: 100%;
+
+          &:not(:last-child) {
+            border: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+/*----------------------------------*\
+  >>> Order show
+\*----------------------------------*/
+
+.order-details-container {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 14px 18px;
+}
+
