@@ -28,6 +28,7 @@
                             <tr>
                                 <th scope="col">Référence</th>
                                 <th scope="col">Commande effectuée le</th>
+                                <th scope="col">Statut</th>
                                 <th scope="col">Total</th>
                             </tr>
                         </thead>
@@ -39,6 +40,15 @@
                                     </td>
                                     <td>
                                         {{ order.createdAt|format_datetime(locale='fr', pattern='dd MMMM YYYY') }}
+                                    </td>
+                                    <td>
+                                        {% if order.status is same as 1 %}
+                                            Payée
+                                        {% elseif order.status is same as 2 %}
+                                            En cours de préparation
+                                        {% elseif order.status is same as 3 %}
+                                            En cours de livraison
+                                        {% endif %}
                                     </td>
                                     <td>
                                         {{ ((order.carrierPrice + order.total)/100)|format_currency('EUR', {fraction_digit: 2}) }}
