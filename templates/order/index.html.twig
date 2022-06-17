@@ -46,7 +46,7 @@
                         {% set total = total + subtotal %}
                         <div class="product-summary-box">
                             <div class="">
-                                <img src="/build/uploads/products/{{ product.product.illustration }}" alt="{{ product.product.name }}" width="100">
+                                <img src="{{ asset('build/uploads/products/'~product.product.illustration) }}" alt="{{ product.product.name }}" width="100">
                             </div>
                             <div class="d-flex flex-column">
                                 <h4 class="text-uppercase fw-bold fs-7">{{ product.product.name }}</h4>

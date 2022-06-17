@@ -115,3 +115,12 @@
     display: none !important;
   }
 }
+
+@media screen and (max-width: 768px) {
+  .best-selling-container {
+    h2 {
+      margin-top: 20px !important;
+      margin-bottom: 0;
+    }
+  }
+}

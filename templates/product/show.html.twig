@@ -10,11 +10,11 @@
         <div class="product-container">
             <div class="product-thumbnails">
                 <div class="thumb-img-container">
-                    <img src="/build/uploads/products/{{ product.illustration }}" alt="{{ product.name }}">
+                    <img src="{{ asset('build/uploads/products/'~product.illustration) }}" alt="{{ product.name }}">
                 </div>
             </div>
             <div class="product-img-container" id="img-container">
-                <img class="img-fluid" src="/build/uploads/products/{{ product.illustration }}" alt="{{ product.name }}">
+                <img class="img-fluid" src="{{ asset('build/uploads/products/'~product.illustration) }}" alt="{{ product.name }}">
             </div>
             <div class="product-details">
                 <div class="product-name-container">
@@ -42,7 +42,7 @@
                             <i class="title-arrow fa-solid fa-angle-right"></i>
                         </summary>
                         <div class="panel-body">
-                            <p>{{ product.subtitle }}</p>
+                            <p>{{ product.detail }}</p>
                         </div>
                     </details>
                     <details class="panel detail-panel">
@@ -63,6 +63,17 @@
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem laudantium natus quidem?</p>
                         </div>
                     </details>
+                </div>
+            </div>
+        </div>
+        <hr class="wide-divider">
+        <div class="best-selling-container">
+            <h2 class="fs-1 fw-bold text-uppercase mt-5">Meilleures ventes</h2>
+            <div class="best-selling mw-100 mb-5">
+                <div class="row">
+                    {% for product in products %}
+                        {{ include('common/product.html.twig') }}
+                    {% endfor %}
                 </div>
             </div>
         </div>

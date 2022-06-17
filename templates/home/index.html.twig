@@ -29,102 +29,10 @@
         </div>
     </section>
     <section class="best-selling">
-        <div class="row container-xxl">
-            <div class="col">
-                <a href="#">
-                    <div class="article">
-                        <div class="article-title">
-                            <h4>Lorem ipsum</h4>
-                        </div>
-                        <div class="top">
-                            <img src="{{ asset('build/images/shoes-nike.jpg') }}" alt="">
-                        </div>
-                        <div class="bottom">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                            <span class="article-price">
-                                <span class="article-price-whole">689,99</span>
-                                <span class="article-price-symbol">€</span>
-                            </span>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col">
-                <a href="#">
-                    <div class="article">
-                        <div  class="article-title">
-                            <h4>Lorem ipsum</h4>
-                        </div>
-                        <div class="top">
-                            <img src="{{ asset('build/images/backpack.jpg') }}" alt="">
-                        </div>
-                        <div class="bottom">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                            <span class="article-price">
-                                <span class="article-price-whole">1199,99</span>
-                                <span class="article-price-symbol">€</span>
-                            </span>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col">
-                <a href="#">
-                    <div class="article">
-                        <div  class="article-title">
-                            <h4>Lorem ipsum</h4>
-                        </div>
-                        <div class="top">
-                            <img src="{{ asset('build/images/coat.jpg') }}" alt="Coat">
-                        </div>
-                        <div class="bottom">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                            <span class="article-price">
-                                <span class="article-price-whole">748,64</span>
-                                <span class="article-price-symbol">€</span>
-                            </span>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col">
-                <a href="#">
-                    <div class="article">
-                        <div class="article-title">
-                            <h4>Lorem ipsum</h4>
-                        </div>
-                        <div class="top">
-                            <img src="{{ asset('build/images/shoes-1.jpg') }}" alt="">
-                        </div>
-                        <div class="bottom">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                            <span class="article-price">
-                                <span class="article-price-whole">889,70</span>
-                                <span class="article-price-symbol">€</span>
-                            </span>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col">
-                <a href="#">
-                    <div class="article">
-                        <div class="article-title">
-                            <h4>Lorem ipsum</h4>
-                        </div>
-                        <div class="top">
-                            <img src="{{ asset('build/images/sunglasses.jpg') }}" alt="">
-                        </div>
-                        <div class="bottom">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                            <span class="article-price">
-                                <span class="article-price-whole">889,70</span>
-                                <span class="article-price-symbol">€</span>
-                            </span>
-                        </div>
-                    </div>
-                </a>
-            </div>
+        <div class="row">
+            {% for product in products %}
+                {{ include('common/product.html.twig') }}
+            {% endfor %}
         </div>
     </section>
     <section>

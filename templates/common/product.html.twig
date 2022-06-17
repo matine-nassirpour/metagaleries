@@ -1,0 +1,19 @@
+<div class="article-container col">
+    <a href="{{ path('app_product', { 'slug': product.slug, 'id': product.id }) }}">
+        <div class="article">
+            <div class="article-title">
+                <h4>{{ product.name|slice(0, 13) }}</h4>
+            </div>
+            <div class="top">
+                <img class="img-fluid" src="{{ asset('build/uploads/products/'~product.illustration) }}" alt="Meta Galeries">
+            </div>
+            <div class="bottom">
+                <p>{{ product.detail }}</p>
+                <span class="article-price">
+                    <span class="article-price-whole">{{ (product.price/100)|number_format(2, ',', ' ') }}</span>
+                    <span class="article-price-symbol">€</span>
+                </span>
+            </div>
+        </div>
+    </a>
+</div>

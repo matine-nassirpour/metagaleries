@@ -36,7 +36,7 @@ class Product
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private string $subtitle;
+    private string $detail;
 
     /**
      * @ORM\Column(type="string")
@@ -52,6 +52,11 @@ class Product
      * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="products")
      */
     private ?Category $category;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private bool $isBest;
 
     public function getId(): int
     {
@@ -94,14 +99,14 @@ class Product
         return $this;
     }
 
-    public function getSubtitle(): string
+    public function getDetail(): string
     {
-        return $this->subtitle;
+        return $this->detail;
     }
 
-    public function setSubtitle(string $subtitle): self
+    public function setDetail(string $detail): self
     {
-        $this->subtitle = $subtitle;
+        $this->detail = $detail;
 
         return $this;
     }
@@ -138,6 +143,18 @@ class Product
     public function setCategory(?Category $category): self
     {
         $this->category = $category;
+
+        return $this;
+    }
+
+    public function getIsBest(): bool
+    {
+        return $this->isBest;
+    }
+
+    public function setIsBest(bool $isBest): self
+    {
+        $this->isBest = $isBest;
 
         return $this;
     }
