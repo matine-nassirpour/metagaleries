@@ -5,27 +5,15 @@
 {% block body %}
     <section>
         <div class="home-slider owl-carousel">
-            <div class="slider-item">
-                <img src="{{ asset('build/images/cover-4.jpg') }}" alt="">
-                <div class="item-description">
-                    <h1>Look Irréprochable</h1>
-                    <p>Confectionnés à partir de matières de première qualité</p>
+            {% for header in headers %}
+                <div class="slider-item">
+                    <img src="{{ asset('build/uploads/products/'~header.illustration) }}" alt="Meta Galeries">
+                    <div class="item-description">
+                        <h1>{{ header.title }}</h1>
+                        <p>{{ header.subtitle }}</p>
+                    </div>
                 </div>
-            </div>
-            <div class="slider-item">
-                <img src="{{ asset('build/images/cover-6.jpg') }}" alt="">
-                <div class="item-description">
-                    <h1>Une touche d'originalité</h1>
-                    <p>Vêtements légers, fluides et confortables</p>
-                </div>
-            </div>
-            <div class="slider-item">
-                <img src="{{ asset('build/images/cover-5.jpg') }}" alt="">
-                <div class="item-description">
-                    <h1>Look Simple</h1>
-                    <p>Les vêtements aux lignes épurées et aux coupes recherchées</p>
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </section>
     <section class="best-selling">
