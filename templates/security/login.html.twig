@@ -17,10 +17,6 @@
                 {{ render(controller('App\\Controller\\RegistrationController::register')) }}
 
                 <form id="loginForm" method="POST" action="{{ path('app_login') }}">
-                    {% if error %}
-                        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-                    {% endif %}
-
                     <div class="form-box-header login-form-header">
                         <label class="form-box-header-radio" for="loginFormRadio">
                             <input class="radio-input" type="radio" name="" id="loginFormRadio" checked>
