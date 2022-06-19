@@ -1,3 +1,4 @@
+/*
 const
     navbarSearch = document.getElementById('navSearchBarForm'),
     searchInput = document.getElementById('navSearchInput'),
@@ -15,4 +16,19 @@ searchInput.addEventListener('focusout', () => {
     navbarSearch.classList.remove('nav-search-focus');
     navbarCover.style.cssText = 'display: none';
 });
+*/
 
+const dropDownMenu = document.getElementById('dropDownMenu');
+
+document.getElementById('dropDownButton').addEventListener('click', () => {
+    dropDownMenu.style.display = 'flex';
+})
+
+$(document).mouseup(function(e) {
+    var container = $("#dropDownMenu");
+
+    // If the target of the click isn't the container
+    if(!container.is(e.target) && container.has(e.target).length === 0){
+        container.hide();
+    }
+});

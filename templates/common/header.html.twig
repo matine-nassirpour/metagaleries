@@ -21,20 +21,35 @@
             #}
             <div class="nav-right">
                 <div class="nav-tools">
-                    <a href="{{ app.user ? path('app_account') : path('app_login') }}" class="nav-a d-flex">
-                        {% if app.user %}
-                            <div class="nav-tool-logged-in-user">
-                                <small>{{ app.user.lastName|upper }}</small>
-                                <div class="d-flex">
-                                    <span>Compte</span>
-                                    <i class="logged-in-user-pointer fa fa-caret-right"></i>
+                    {% if app.user %}
+                        <div class="dropdown">
+                            <a href="#" role="button" class="nav-a d-flex" id="dropDownButton">
+                                <div class="nav-tool-logged-in-user">
+                                    <small>{{ app.user.lastName|upper }}</small>
+                                    <div class="d-flex">
+                                        <span>Compte</span>
+                                        <i class="logged-in-user-pointer fa fa-caret-down"></i>
+                                    </div>
                                 </div>
+                                <div class="nav-tool-user">
+                                    <i class="far fa-user"></i>
+                                </div>
+                            </a>
+                            <div class="nav-dropdown-account-list" id="dropDownMenu">
+                                <h6 class="mb-0 fw-bold">Votre compte</h6>
+                                <a class="py-2" href="{{ path('app_account') }}">Votre compte</a>
+                                <a href="{{ path('app_account_orders') }}">Vos commandes</a>
+                                <hr class="light-divider my-2">
+                                <a href="{{ path('app_logout') }}">Déconnexion</a>
                             </div>
-                        {% endif %}
-                        <div class="nav-tool-user">
-                            <i class="far fa-user"></i>
                         </div>
-                    </a>
+                    {% else %}
+                        <a href="{{ path('app_login') }}" class="nav-a d-flex">
+                            <div class="nav-tool-user">
+                                <i class="far fa-user"></i>
+                            </div>
+                        </a>
+                    {% endif %}
                     <a href="{{ path('app_cart') }}" class="nav-a">
                         <div class="nav-tool-cart">
                             <i class="fas fa-shopping-cart"></i>

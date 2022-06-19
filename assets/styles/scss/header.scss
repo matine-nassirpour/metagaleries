@@ -161,7 +161,7 @@
   justify-content: center;
   align-items: flex-end;
   font-size: 12px;
-  margin-right: 14px;
+  margin-right: 8px;
 }
 
 .logged-in-user-pointer {
@@ -227,6 +227,42 @@
   margin-right: 15px;
 }
 
+.nav-dropdown-account-list {
+  display: none;
+  width: 170px;
+  background-color: #FFFFFF;
+  position: absolute;
+  top: 150%;
+  right: -18%;
+  flex-direction: column;
+  color: black;
+  border-radius: 3px;
+  border: 1px solid #bbb;
+  padding: 14px;
+
+  &:before {
+    content: "";
+    width: 5px;
+    height: 5px;
+    position: absolute;
+    top: -7%;
+    right: 35%;
+    border-left: 9px solid transparent;
+    border-right: 9px solid transparent;
+    border-bottom: 10px solid white;
+  }
+
+  a {
+    color: var(--color-primary-text);
+    font-size: 13px;
+
+    &:hover {
+      text-decoration: underline;
+      color: #C45500;
+    }
+  }
+}
+
 @media screen and (max-width: 320px) {
   .nav-tools {
     font-size: 23px;
@@ -256,6 +292,10 @@
 
   .nav-tool-cart-text {
     display: none;
+  }
+
+  .nav-dropdown-account-list {
+    right: -19%;
   }
 }
 
