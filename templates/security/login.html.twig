@@ -29,7 +29,8 @@
                             <label for="inputEmail">Adresse e-mail</label>
                             <input
                                 class="form-control login-form-email-input"
-                                type="text" value="{{ last_username }}"
+                                type="text"
+                                value="{{ last_username }}"
                                 id="inputEmail"
                                 name="email"
                                 autocomplete="email"
@@ -41,10 +42,14 @@
                             </span>
                         </fieldset>
                         <fieldset>
-                            <label for="inputPassword">Mot de passe</label>
+                            <div class="d-flex justify-content-between">
+                                <label for="inputPassword">Mot de passe</label>
+                                <a href="{{ path('app_forgot_password') }}">Mot de passe oublié ?</a>
+                            </div>
                             <input
                                 class="form-control login-password-input"
-                                type="password" name="password"
+                                type="password"
+                                name="password"
                                 id="inputPassword"
                                 autocomplete="current-password"
                             >

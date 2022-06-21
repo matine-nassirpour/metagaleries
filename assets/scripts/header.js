@@ -20,15 +20,17 @@ searchInput.addEventListener('focusout', () => {
 
 const dropDownMenu = document.getElementById('dropDownMenu');
 
-document.getElementById('dropDownButton').addEventListener('click', () => {
-    dropDownMenu.style.display = 'flex';
-})
+if (dropDownMenu) {
+    document.getElementById('dropDownButton').addEventListener('click', () => {
+        dropDownMenu.style.display = 'flex';
+    })
 
-$(document).mouseup(function(e) {
-    var container = $("#dropDownMenu");
+    $(document).mouseup(function(e) {
+        var container = $("#dropDownMenu");
 
-    // If the target of the click isn't the container
-    if(!container.is(e.target) && container.has(e.target).length === 0){
-        container.hide();
-    }
-});
+        // If the target of the click isn't the container
+        if(!container.is(e.target) && container.has(e.target).length === 0){
+            container.hide();
+        }
+    });
+}

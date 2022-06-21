@@ -5,6 +5,10 @@
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('build/images/icons/apple-touch-icon.39264497.png') }}">
+        <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('build/images/icons/favicon-32x32.5a9f7a6e.png') }}">
+        <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('build/images/icons/favicon-16x16.88f20cbc.png') }}">
+        <link rel="manifest" href="{{ asset('build/images/icons/site.1c337fa2.webmanifest') }}">
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
