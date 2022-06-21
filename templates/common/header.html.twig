@@ -36,8 +36,11 @@
                                 </div>
                             </a>
                             <div class="nav-dropdown-account-list" id="dropDownMenu">
-                                <h6 class="mb-0 fw-bold">Votre compte</h6>
-                                <a class="py-2" href="{{ path('app_account') }}">Votre compte</a>
+                                <h6 class="mb-0 fw-bold pb-2">Votre compte</h6>
+                                {% if is_granted('ROLE_ADMIN') %}
+                                    <a class="pb-2" href="{{ path('admin') }}">Accéder au backoffice</a>
+                                {% endif %}
+                                <a class="pb-2" href="{{ path('app_account') }}">Votre compte</a>
                                 <a href="{{ path('app_account_orders') }}">Vos commandes</a>
                                 <hr class="light-divider my-2">
                                 <a href="{{ path('app_logout') }}">Déconnexion</a>

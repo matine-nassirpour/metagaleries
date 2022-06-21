@@ -18,19 +18,31 @@ searchInput.addEventListener('focusout', () => {
 });
 */
 
-const dropDownMenu = document.getElementById('dropDownMenu');
+const
+    dropDownMenu = document.getElementById('dropDownMenu'),
+    navbarCover = document.getElementById('navCover'),
+    pageContainer = document.getElementById('pageContainer')
+;
+
+console.log(pageContainer)
 
 if (dropDownMenu) {
     document.getElementById('dropDownButton').addEventListener('click', () => {
         dropDownMenu.style.display = 'flex';
+        navbarCover.style.cssText = 'display: block; z-index: auto;';
+        navbarCover.style.height = `${pageContainer.clientHeight}px`;
     })
 
     $(document).mouseup(function(e) {
-        var container = $("#dropDownMenu");
+        var
+            container = $("#dropDownMenu"),
+            coverPage = $("#navCover")
+        ;
 
         // If the target of the click isn't the container
         if(!container.is(e.target) && container.has(e.target).length === 0){
             container.hide();
+            coverPage.hide();
         }
     });
 }

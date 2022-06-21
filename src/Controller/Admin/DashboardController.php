@@ -18,7 +18,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class DashboardController extends AbstractDashboardController
 {
     /**
-     * @Route("/admin", name="admin")
+     * @Route("/mg-secure-admin-access", name="admin")
      */
     public function index(): Response
     {
