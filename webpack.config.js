@@ -27,6 +27,7 @@ Encore
     .addEntry('products', './assets/scripts/products')
     .addEntry('product', './assets/scripts/product')
     .addEntry('reset-password', './assets/scripts/reset-password')
+    .addEntry('page-404', './assets/scripts/page-404')
 
     // enables the Symfony UX Stimulus bridge (used in assets/bootstrap.js)
     .enableStimulusBridge('./assets/controllers.json')

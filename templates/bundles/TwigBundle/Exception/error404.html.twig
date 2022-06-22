@@ -1,0 +1,121 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}404 | Meta Galeries{% endblock %}
+
+{% block header %}
+    {{ include('common/login_register_header.html.twig') }}
+{% endblock %}
+
+{% block body %}
+    <div class="error-page-container">
+        <div class="error">
+            <h1>404</h1>
+            <h2>Oops !</h2>
+            <p>Il semble que nous n'ayons pas trouvé la page que vous cherchiez.</p>
+        </div>
+        <div class="stack-container">
+            <div class="browser-simulator-container">
+                <div class="perspective" style="--spreaddist: 125px; --scaledist: .75; --vertdist: -25px;">
+                    <div class="browser-simulator">
+                        <div class="page">
+                            <div class="browser-navigation">
+                                <div class="red"></div>
+                                <div class="yellow"></div>
+                                <div class="green"></div>
+                            </div>
+                            <div class="page-content">
+                                <ul></ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="browser-simulator-container">
+                <div class="perspective" style="--spreaddist: 100px; --scaledist: .8; --vertdist: -20px;">
+                    <div class="browser-simulator">
+                        <div class="page">
+                            <div class="browser-navigation">
+                                <div class="red"></div>
+                                <div class="yellow"></div>
+                                <div class="green"></div>
+                            </div>
+                            <div class="page-content">
+                                <ul></ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="browser-simulator-container">
+                <div class="perspective" style="--spreaddist: 75px; --scaledist: .85; --vertdist: -15px;">
+                    <div class="browser-simulator">
+                        <div class="page">
+                            <div class="browser-navigation">
+                                <div class="red"></div>
+                                <div class="yellow"></div>
+                                <div class="green"></div>
+                            </div>
+                            <div class="page-content">
+                                <ul></ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="browser-simulator-container">
+                <div class="perspective" style="--spreaddist: 50px; --scaledist: .9; --vertdist: -10px;">
+                    <div class="browser-simulator">
+                        <div class="page">
+                            <div class="browser-navigation">
+                                <div class="red"></div>
+                                <div class="yellow"></div>
+                                <div class="green"></div>
+                            </div>
+                            <div class="page-content">
+                                <ul></ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="browser-simulator-container">
+                <div class="perspective" style="--spreaddist: 25px; --scaledist: .95; --vertdist: -5px;">
+                    <div class="browser-simulator">
+                        <div class="page">
+                            <div class="browser-navigation">
+                                <div class="red"></div>
+                                <div class="yellow"></div>
+                                <div class="green"></div>
+                            </div>
+                            <div class="page-content">
+                                <ul></ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="browser-simulator-container">
+                <div class="perspective" style="--spreaddist: 0; --scaledist: 1; --vertdist: 0;">
+                    <div class="browser-simulator">
+                        <div class="page">
+                            <div class="browser-navigation">
+                                <div class="red"></div>
+                                <div class="yellow"></div>
+                                <div class="green"></div>
+                            </div>
+                            <div class="page-content">
+                                <ul></ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block footer %}{% endblock %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('page-404') }}
+{% endblock %}
