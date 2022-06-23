@@ -1,0 +1,30 @@
+#contact_sex {
+  display: flex;
+  gap: 1.5rem;
+
+  .form-check {
+
+    .form-check-label {
+      margin-bottom: 0;
+      position: relative;
+      top: 3px;
+    }
+  }
+}
+
+#contact_content {
+  height: 250px;
+  max-height: 300px;
+}
+
+.swal2-popup {
+  width: 25em !important;
+}
+
+.swal2-title {
+  font-size: 1.3em !important;
+}
+
+.swal2-html-container {
+  font-size: .9em !important;
+}

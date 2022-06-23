@@ -4,15 +4,16 @@
 
 {% block body %}
     <div class="full-height-page p-4">
-        <div class="contact-container">
+        <div class="medium-container">
             {{ include('common/flashbag.html.twig') }}
             <h3 class="contact-title">Nous contacter</h3>
-            {{ form_start(contactForm) }}
+            {{ form_start(contactForm, {'attr': {'id': 'contactForm'}}) }}
                 {{ form_row(contactForm.sex) }}
                 {{ form_row(contactForm.firstName) }}
                 {{ form_row(contactForm.lastName) }}
                 {{ form_row(contactForm.email) }}
                 {{ form_row(contactForm.content) }}
+
                 <button class="btn button-primary mt-1" type="submit">Envoyer</button>
             {{ form_end(contactForm) }}
         </div>
@@ -22,4 +23,5 @@
 {% block javascripts %}
     {{ parent() }}
     {{ encore_entry_script_tags('full-height-page') }}
+    {{ encore_entry_script_tags('contact') }}
 {% endblock %}

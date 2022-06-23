@@ -34,7 +34,6 @@ class ContactController extends AbstractController
             $this->entityManager->flush();
 
             return $this->redirectToRoute('app_home');
-//            $this->addFlash('success', 'Votre message a bien été envoyé. Nous vous répondons dans les meilleurs délais');
         }
 
         return $this->render('contact/index.html.twig', [

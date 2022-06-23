@@ -31,7 +31,7 @@ class ContactType extends AbstractType
                 'label' => 'Adresse e-mail'
             ])
             ->add('content', TextareaType::class, [
-                'label' => 'Message'
+                'label' => 'Message',
             ])
         ;
     }

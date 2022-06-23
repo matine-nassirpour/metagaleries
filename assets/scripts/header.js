@@ -24,8 +24,6 @@ const
     pageContainer = document.getElementById('pageContainer')
 ;
 
-console.log(pageContainer)
-
 if (dropDownMenu) {
     document.getElementById('dropDownButton').addEventListener('click', () => {
         dropDownMenu.style.display = 'flex';
