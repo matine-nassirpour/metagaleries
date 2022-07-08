@@ -7,6 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=ResetPasswordRepository::class)
+ * @ORM\Table(name="`forgot_passwords`")
  */
 class ForgotPassword
 {
