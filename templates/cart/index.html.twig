@@ -28,7 +28,7 @@
                             <td>
                                 <div class="d-flex flex-column">
                                     <h1 class="text-uppercase fs-6 fw-bold">{{ product.product.name }}</h1>
-                                    <span>{{ product.product.description }}</span>
+                                    <span>{{ product.product.description|nl2br }}</span>
                                     <span>{{ product.product.detail }}</span>
                                     <a class="a-remove-product mt-3" href="{{ path('app_remove_product', { 'id': product.product.id }) }}">
                                         Supprimer
