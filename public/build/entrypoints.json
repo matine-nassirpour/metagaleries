@@ -1,0 +1,77 @@
+{
+  "entrypoints": {
+    "app": {
+      "js": [
+        "/build/runtime.js",
+        "/build/vendors-node_modules_core-js_internals_export_js.js",
+        "/build/vendors-node_modules_jquery_dist_jquery_js.js",
+        "/build/vendors-node_modules_core-js_internals_array-iteration_js-node_modules_core-js_internals_crea-45091f.js",
+        "/build/vendors-node_modules_fortawesome_fontawesome-free_js_all_js-node_modules_symfony_stimulus-bri-fd7de4.js",
+        "/build/app.js"
+      ],
+      "css": [
+        "/build/vendors-node_modules_fortawesome_fontawesome-free_js_all_js-node_modules_symfony_stimulus-bri-fd7de4.css",
+        "/build/app.css"
+      ]
+    },
+    "full-height-page": {
+      "js": [
+        "/build/runtime.js",
+        "/build/vendors-node_modules_core-js_internals_export_js.js",
+        "/build/full-height-page.js"
+      ]
+    },
+    "home": {
+      "js": [
+        "/build/runtime.js",
+        "/build/vendors-node_modules_jquery_dist_jquery_js.js",
+        "/build/home.js"
+      ]
+    },
+    "login-register": {
+      "js": [
+        "/build/runtime.js",
+        "/build/vendors-node_modules_core-js_internals_export_js.js",
+        "/build/vendors-node_modules_core-js_modules_es_string_match_js.js",
+        "/build/login-register.js"
+      ]
+    },
+    "products": {
+      "js": [
+        "/build/runtime.js",
+        "/build/vendors-node_modules_jquery_dist_jquery_js.js",
+        "/build/products.js"
+      ]
+    },
+    "product": {
+      "js": [
+        "/build/runtime.js",
+        "/build/vendors-node_modules_js-image-zoom_js-image-zoom_js.js",
+        "/build/product.js"
+      ]
+    },
+    "reset-password": {
+      "js": [
+        "/build/runtime.js",
+        "/build/reset-password.js"
+      ]
+    },
+    "page-404": {
+      "js": [
+        "/build/runtime.js",
+        "/build/vendors-node_modules_core-js_internals_export_js.js",
+        "/build/vendors-node_modules_core-js_internals_array-iteration_js-node_modules_core-js_internals_crea-45091f.js",
+        "/build/page-404.js"
+      ]
+    },
+    "contact": {
+      "js": [
+        "/build/runtime.js",
+        "/build/vendors-node_modules_core-js_internals_export_js.js",
+        "/build/vendors-node_modules_jquery_dist_jquery_js.js",
+        "/build/vendors-node_modules_core-js_modules_web_timers_js-node_modules_sweetalert2_dist_sweetalert2_all_js.js",
+        "/build/contact.js"
+      ]
+    }
+  }
+}
